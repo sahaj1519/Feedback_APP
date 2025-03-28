@@ -11,6 +11,9 @@ class DataController: ObservableObject {
     
     let container: NSPersistentCloudKitContainer
     @Published var selectedFilter: Filter? = Filter.all
+    @Published var selectedIssue: Issue?
+    
+    private var saveTask: Task<Void, Error>?
     
     static var preview: DataController {
         let dataController = DataController(inMemory: true)
@@ -24,11 +27,21 @@ class DataController: ObservableObject {
         if inMemory {
             container.persistentStoreDescriptions.first?.url = URL(filePath: "/dev/null")
         }
+        container.viewContext.automaticallyMergesChangesFromParent = true
+        container.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
+        
+        container.persistentStoreDescriptions.first?.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
+        NotificationCenter.default.addObserver(forName: .NSPersistentStoreRemoteChange, object: container.persistentStoreCoordinator, queue: .main, using: remoteStoreChanged)
+        
         container.loadPersistentStores{ storeDescription, error in
             if let error {
                 fatalError("Fatal error loading store: \(error.localizedDescription)")
             }
         }
+    }
+    
+    func remoteStoreChanged(_ notification: Notification){
+        objectWillChange.send()
     }
     
     func createSampleData(){
@@ -59,6 +72,15 @@ class DataController: ObservableObject {
         }
     }
     
+    func queueSave(){
+        saveTask?.cancel()
+        
+        saveTask = Task{ @MainActor in 
+             try await Task.sleep(for: .seconds(3))
+             saveChanges()
+        }
+    }
+    
     func deleteObject(object: NSManagedObject){
         objectWillChange.send()
         container.viewContext.delete(object)
@@ -83,5 +105,16 @@ class DataController: ObservableObject {
         deleteRequest(request: request2)
       
         saveChanges()
+    }
+    
+    func missingTags(from issue: Issue) -> [Tag]{
+        let request = Tag.fetchRequest()
+        let allTags = (try? container.viewContext.fetch(request)) ?? []
+        
+        let allTagsSet = Set(allTags)
+        
+        let difference = allTagsSet.symmetricDifference(issue.issueTag)
+        
+        return difference.sorted()
     }
 }

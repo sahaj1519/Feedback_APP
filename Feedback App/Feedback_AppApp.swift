@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct Feedback_AppApp: App {
     @StateObject  var dataController = DataController()
-
+    @Environment(\.scenePhase) var scenePhase
     var body: some Scene {
         WindowGroup {
             NavigationSplitView{
@@ -22,6 +22,11 @@ struct Feedback_AppApp: App {
             }
                 .environment(\.managedObjectContext, dataController.container.viewContext)
                 .environmentObject(dataController)
+                .onChange(of: scenePhase){ newPhase, _ in
+                    if newPhase != .active{
+                        dataController.saveChanges()
+                    }
+                }
         }
     }
 }
