@@ -7,13 +7,29 @@
 
 import CoreData
 
+enum SortType: String{
+    case dateCreated = "creationDate"
+    case dateModified = "modificationDate"
+}
+
+enum Status{
+    case all, open, closed
+}
+
 class DataController: ObservableObject {
     
     let container: NSPersistentCloudKitContainer
     @Published var selectedFilter: Filter? = Filter.all
     @Published var selectedIssue: Issue?
+    
     @Published var searchText = ""
     @Published var searchTokens = [Tag]()
+    
+    @Published var filterEnabled = false
+    @Published var filterPriority = -1
+    @Published var filterStatus = Status.all
+    @Published var sortType = SortType.dateCreated
+    @Published var sortNewestFirst = true
     
     private var saveTask: Task<Void, Error>?
     
@@ -81,6 +97,8 @@ class DataController: ObservableObject {
     }
     
     func saveChanges(){
+        saveTask?.cancel()
+        
         if container.viewContext.hasChanges {
             try? container.viewContext.save()
         }
@@ -160,10 +178,82 @@ class DataController: ObservableObject {
            }
        }
        
+       if filterEnabled{
+           if filterPriority >= 0{
+               let priorityPredicate = NSPredicate(format: "priority = %d", filterPriority)
+               predicates.append(priorityPredicate)
+           }
+           
+           if filterStatus != .all {
+               let lookForClosed = filterStatus == .closed
+               let statusPredicate = NSPredicate(format: "isCompleted = %@", NSNumber(value: lookForClosed))
+               predicates.append(statusPredicate)
+           }
+       }
+       
         let request = Issue.fetchRequest()
         request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
+       
+        request.sortDescriptors = [NSSortDescriptor(key: sortType.rawValue, ascending: sortNewestFirst)]
+       
         let allIssues = (try? container.viewContext.fetch(request)) ?? []
-        return allIssues.sorted()
+        return allIssues
+    }
+    
+    func addNewIssue(){
+        let issue = Issue(context: container.viewContext)
+        
+        issue.title = "New Issue"
+        issue.creationDate = .now
+        issue.priority = 1
+        
+        if let tag = selectedFilter?.tag {
+            issue.addToTags(tag)
+        }
+        saveChanges()
+        
+        selectedIssue = issue
+    }
+    
+    func addNewTag(){
+        let tag = Tag(context: container.viewContext)
+        
+        tag.id = UUID()
+        tag.name = "New Tag"
+        
+        saveChanges()
+    }
+    
+    func count<T>(for fetchRequest: NSFetchRequest<T>) -> Int{
+        ( try? container.viewContext.count(for: fetchRequest)) ?? 0
+    }
+    
+    func hasEarned(award: Award) -> Bool{
+        switch award.criterion {
+        case "issues":
+            // returns true if they added a certain number of issues
+            let fetchRequest = Issue.fetchRequest()
+            let awardCount = count(for: fetchRequest)
+            return awardCount >= award.value
+            
+        case "closed":
+            // returns true if they closed a certain number of issues
+            let fetchRequest = Issue.fetchRequest()
+            fetchRequest.predicate = NSPredicate(format: "isCompleted = true")
+            let awardCount = count(for: fetchRequest)
+            return awardCount >= award.value
+            
+        case "tags":
+            // return true if they created a certain number of tags
+            let fetchrequest = Tag.fetchRequest()
+            let awardCount = count(for: fetchrequest)
+            return awardCount >= award.value
+            
+        default:
+            // an unknown award criterion; this should never be allowed
+            // fatalError("Unknown award criterion: \(award.criterion)")
+            return false
+        }
     }
     
 }
