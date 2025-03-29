@@ -11,22 +11,8 @@ import CoreData
 struct ContentView: View {
     @EnvironmentObject var dataController: DataController
     
-    var issues: [Issue]{
-        let filter = dataController.selectedFilter ?? .all
-        var allIssues: [Issue]
-        
-        if let tag = filter.tag{
-            allIssues = tag.issues?.allObjects as? [Issue] ?? []
-            
-        }else{
-            let request = Issue.fetchRequest()
-            request.predicate = NSPredicate(format: "modificationDate > %@",  filter.minModificationDate as NSDate)
-            allIssues = (try? dataController.container.viewContext.fetch(request)) ?? []
-        }
-        return allIssues.sorted()
-    }
-    
     func delete(_ offset: IndexSet){
+        let issues = dataController.issueForSelectedFilter()
         for index in offset{
             let item = issues[index]
             dataController.deleteObject(object: item)
@@ -36,10 +22,13 @@ struct ContentView: View {
     var body: some View {
         
         List(selection: $dataController.selectedIssue){
-            ForEach(issues){item in
+            ForEach(dataController.issueForSelectedFilter()){item in
                 ContentViewRows(issue: item)
             }.onDelete(perform: delete)
         }.navigationTitle("Issues")
+        .searchable(text: $dataController.searchText, tokens: $dataController.searchTokens, suggestedTokens: .constant(dataController.suggestedSearchTokens), prompt: "Find Issues"){tag in
+                Text(tag.tagName)
+            }
     }
 }
 
