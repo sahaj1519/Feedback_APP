@@ -26,7 +26,7 @@ struct ContentView: View {
                 ContentViewRows(issue: item)
             }.onDelete(perform: deleteIssue)
         }.navigationTitle("Issues")
-            .searchable(text: $dataController.searchText, tokens: $dataController.searchTokens, suggestedTokens: .constant(dataController.suggestedSearchTokens), prompt: "Find Issues"){tag in
+            .searchable(text: $dataController.searchText, tokens: $dataController.searchTokens, suggestedTokens: .constant(dataController.suggestedSearchTokens), prompt: "Filter issues, or type # to add tags"){tag in
                 Text(tag.tagName)
             }
             .toolbar{

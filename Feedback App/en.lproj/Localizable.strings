@@ -1,0 +1,92 @@
+/* GENERAL STRINGS */
+"OK" = "OK";
+"Cancel" = "Cancel";
+"Delete" = "Delete";
+"Rename" = "Rename";
+"Actions" = "Actions";
+
+
+
+/* SIDEBARVIEW */
+"Filters" = "Filters";
+"Smart Filters" = "Smart Filters";
+"All Issues" = "All Issues";
+"Recent Issues" = "Recent Issues";
+"Tags" = "Tags";
+"Add Tag" = "Add Tag";
+"Show Awards" = "Show Awards";
+
+"Rename Tag" = "Rename Tag";
+"New Name" = "New Name";
+
+
+
+/* CONTENTVIEW */
+"Issues" = "Issues";
+
+/* A button that shows a menu with the following options */
+"Filter" = "Filter";
+"Turn Filter On" = "Turn Filter On"; /* Enables filtering */
+"Turn Filter Off" = "Turn Filter Off"; /* Disables filtering */
+"Sort By" = "Sort By"; /* Adjust the order issues are shown */
+"Date Created" = "Date Created"; /* Sort issues by the date they were created */
+"Date Modified" = "Date Modified"; /* Sort issues by the date they were last changed */
+"Newest To Oldest" = "Newest To Oldest"; /* Place newer issues before older issues */
+"Oldest To Newest" = "Oldest To Newest"; /* Place older issues before newer issues */
+
+"All" = "All";
+"Open" = "Open";
+"Closed" = "Closed";
+
+"Low" = "Low";
+"Medium" = "Medium";
+"High" = "High";
+
+/* Create a new issue */
+"New Issue" = "New Issue";
+
+/* A text placeholder, to help users search */
+"Filter issues, or type # to add tags" = "Filter issues, or type # to add tags";
+
+/* Shown as a status for closed issues */
+"CLOSED" = "CLOSED";
+"" = "";
+
+
+
+/* DETAILSVIEW */
+"Details" = "Details";
+
+/* NOISSUEVIEW */
+"No Issue Selected" = "No Issue Selected";
+
+/* ISSUEVIEW */
+"Copy Issue Title" = "Copy Issue Title";
+"Close Issue" = "Close Issue";
+"Re-open Issue" = "Re-open Issue";
+
+/* Fields that let the users enter details about a specific issue */
+"Enter the issue title here" = "Enter the issue title here";
+"**Modified:** %@" = "**Modified:** %@";
+"**Status:** %@" = "**Status:** %@";
+"Priority" = "Priority";
+"Add Tags" = "Add Tags";
+"Basic Information" = "Basic Information";
+"Enter the issue description here" = "Enter the issue description here";
+
+
+
+/* AWARDS VIEW */
+"Awards" = "Awards";
+
+
+
+/* DATA */
+"New tag" = "New tag";
+"New issue" = "New issue";
+
+
+
+/* DEBUG ONLY */
+"ADD SAMPLES" = "ADD SAMPLES";
+

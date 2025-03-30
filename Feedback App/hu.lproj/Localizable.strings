@@ -1,0 +1,91 @@
+/* GENERAL STRINGS */
+"OK" = "OK";
+"Cancel" = "Mégsem";
+"Delete" = "Törlés";
+"Rename" = "Átnevezés";
+"Actions" = "Műveletek";
+
+
+ 
+/* SIDEBARVIEW */
+"Filters" = "Szűrők";
+"Smart Filters" = "Intelligens szűrők";
+"All Issues" = "Összes probléma";
+"Recent Issues" = "Legutóbbi problémák";
+"Tags" = "Címkék";
+"Add Tag" = "Címke hozzáadása";
+"Show Awards" = "Díjak megjelenítése";
+
+"Rename Tag" = "Címke átnevezése";
+"New Name" = "Új név";
+
+
+
+/* CONTENTVIEW */
+"Issues" = "Problémák";
+
+/* A button that shows a menu with the following options */
+"Filter" = "Szűrő";
+"Turn Filter On" = "Szűrő bekapcsolása"; /* Enables filtering */
+"Turn Filter Off" = "Szűrő kikapcsolása"; /* Disables filtering */
+"Sort By" = "Rendezés"; /* Adjust the order issues are shown */
+"Date Created" = "Létrehozás dátuma"; /* Sort issues by the date they were created */
+"Date Modified" = "Módosítás dátuma"; /* Sort issues by the date they were last changed */
+"Newest To Oldest" = "Legújabbtól a legrégebbig"; /* Place newer issues before older issues */
+"Oldest To Newest" = "Legrégebbitől a legújabbig"; /* Place older issues before newer issues */
+
+"All" = "Összes";
+"Open" = "Nyitott";
+"Closed" = "Lezárt";
+
+"Low" = "Alacsony";
+"Medium" = "Közepes";
+"High" = "Magas";
+
+/* Create a new issue */
+"New Issue" = "Új probléma";
+
+/* A text placeholder, to help users search */
+"Filter issues, or type # to add tags" = "Szűrje ki a problémákat, vagy írja be a # karaktert címkék hozzáadásához";
+
+/* Shown as a status for closed issues */
+"CLOSED" = "LEZÁRT";
+"" = "";
+
+
+
+/* DETAILSVIEW */
+"Details" = "Részletek";
+
+/* NOISSUEVIEW */
+"No Issue Selected" = "Nincs kiválasztott probléma";
+
+/* ISSUEVIEW */
+"Copy Issue Title" = "Probléma címének másolása";
+"Close Issue" = "Probléma lezárása";
+"Re-open Issue" = "Probléma újranyitása";
+
+/* Fields that let the users enter details about a specific issue */
+"Enter the issue title here" = "Írja be a probléma címét ide";
+"**Modified:** %@" = "**Módosítva:** %@";
+"**Status:** %@" = "**Állapot:** %@";
+"Priority" = "Prioritás";
+"Add Tags" = "Címkék hozzáadása";
+"Basic Information" = "Alapinformáció";
+"Enter the issue description here" = "Írja be a probléma leírását ide";
+
+
+
+/* AWARDS VIEW */
+"Awards" = "Díjak";
+
+
+
+/* DATA */
+"New tag" = "Új címke";
+"New issue" = "Új szám";
+
+
+
+/* DEBUG ONLY */
+"ADD SAMPLES" = "ADD SAMPLES";

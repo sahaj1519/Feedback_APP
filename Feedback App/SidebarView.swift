@@ -57,7 +57,7 @@ struct SidebarView: View {
             Section("Smart Filters"){
                 ForEach(smartFilters){ item in
                     NavigationLink(value: item){
-                        Label(item.name, systemImage: item.icon)
+                        Label(LocalizedStringKey(item.name), systemImage: item.icon)
                     }
                 }
             }
@@ -65,7 +65,7 @@ struct SidebarView: View {
                 ForEach(tagFilters){ item in
                     NavigationLink(value: item){
                         Label(item.name, systemImage: item.icon)
-                            .badge(item.tag?.tagIssue.count ?? 0)
+                            .badge(item.activeIssueCount)
                             .contextMenu{
                                 Button{
                                     rename(item)
@@ -79,6 +79,9 @@ struct SidebarView: View {
                                     Label("Delete", systemImage: "trash")
                                 }
                             }
+                            .accessibilityElement()
+                            .accessibilityLabel(item.name)
+                            .accessibilityHint("\(item.activeIssueCount) issues")
                     }
                     
                 }.onDelete(perform: deleteTag)
@@ -98,7 +101,7 @@ struct SidebarView: View {
                 dataController.deleteAllData()
                 dataController.createSampleData()
             }label: {
-                Label("Add Samples", systemImage: "flame")
+                Label("ADD SAMPLES", systemImage: "flame")
             }
         #endif
         }
