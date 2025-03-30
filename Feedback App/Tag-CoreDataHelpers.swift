@@ -7,22 +7,22 @@
 
 import SwiftUI
 
-extension Tag{
+extension Tag {
     
-    var tagId: UUID{
+    var tagId: UUID {
         id ?? UUID()
     }
     
-    var tagName: String{
+    var tagName: String {
         name ?? ""
     }
     
-    var tagIssue: [Issue]{
+    var tagIssue: [Issue] {
         let result = issues?.allObjects as? [Issue] ?? []
-        return result.filter { $0.isCompleted == false}
+        return result.filter { !$0.isCompleted }
     }
     
-    static var example: Tag{
+    static var example: Tag {
         let controller = DataController(inMemory: true)
         let context = controller.container.viewContext
         
@@ -33,15 +33,15 @@ extension Tag{
     }
 }
 
-extension Tag: Comparable{
+extension Tag: Comparable {
     
-    public static func <(lhs: Tag, rhs: Tag) -> Bool{
+    public static func < (lhs: Tag, rhs: Tag) -> Bool {
         let left = lhs.tagName.localizedLowercase
         let right = rhs.tagName.localizedLowercase
         
         if left == right {
             return lhs.tagId.uuidString < rhs.tagId.uuidString
-        }else{
+        } else {
             return left < right
         }
     }

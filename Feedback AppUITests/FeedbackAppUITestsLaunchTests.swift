@@ -1,5 +1,5 @@
 //
-//  Feedback_AppUITestsLaunchTests.swift
+//  FeedbackAppUITestsLaunchTests.swift
 //  Feedback AppUITests
 //
 //  Created by Ajay Sangwan on 27/03/25.
@@ -7,9 +7,9 @@
 
 import XCTest
 
-final class Feedback_AppUITestsLaunchTests: XCTestCase {
+final class FeedbackAppUITestsLaunchTests: XCTestCase {
 
-    override class var runsForEachTargetApplicationUIConfiguration: Bool {
+    override static var runsForEachTargetApplicationUIConfiguration: Bool {
         true
     }
 

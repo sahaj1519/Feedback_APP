@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct Award: Codable, Identifiable{
+struct Award: Codable, Identifiable {
     
-    var id: String{ name }
+    var id: String { name }
     var name: String
     var description: String
     var color: String
@@ -17,6 +17,6 @@ struct Award: Codable, Identifiable{
     var value: Int
     var image: String
     
-    static let allAward = Bundle.main.decode("Awards.json" , as: [Award].self)
+    static let allAward = Bundle.main.decode("Awards.json", as: [Award].self)
     static let example = allAward[0]
 }

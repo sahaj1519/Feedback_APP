@@ -1,10 +1,3 @@
-//
-//  SidebarView.swift
-//  Feedback App
-//
-//  Created by Ajay Sangwan on 27/03/25.
-//
-
 import SwiftUI
 
 struct SidebarView: View {
@@ -16,101 +9,59 @@ struct SidebarView: View {
     @State private var tagToRename: Tag?
     @State private var isAlertForRenameTag = false
     @State private var tagNewName = ""
-    
-    @State private var isShowingAward = false
-    
-    var tagFilters: [Filter]{
-        tags.map{ tag in
+
+    var tagFilters: [Filter] {
+        tags.map { tag in
             Filter(id: tag.tagId, name: tag.tagName, icon: "tag.fill", tag: tag)
-               
         }
     }
     
-    func deleteTag(_ offset: IndexSet){
+    func deleteTag(_ offset: IndexSet) {
         for index in offset {
             let item = tags[index]
             dataController.deleteObject(object: item)
         }
     }
     
-    func deleteTagAnotherMethod(_ filter: Filter){
-        guard let tag = filter.tag else{ return}
-        
+    func deleteTagAnotherMethod(_ filter: Filter) {
+        guard let tag = filter.tag else { return }
         dataController.deleteObject(object: tag)
         dataController.saveChanges()
     }
     
-    func rename(_ filter: Filter){
+    func rename(_ filter: Filter) {
         tagToRename = filter.tag
         tagNewName = filter.name
         isAlertForRenameTag = true
     }
     
-    func saveRenameTag(){
+    func saveRenameTag() {
         tagToRename?.name = tagNewName
         dataController.saveChanges()
     }
     
     var body: some View {
-
-        List(selection: $dataController.selectedFilter){
-            Section("Smart Filters"){
-                ForEach(smartFilters){ item in
-                    NavigationLink(value: item){
-                        Label(LocalizedStringKey(item.name), systemImage: item.icon)
-                    }
+        List(selection: $dataController.selectedFilter) {
+            Section("Smart Filters") {
+                ForEach(smartFilters, content: SmartFilterRow.init)
+            }
+            Section("Tags") {
+                ForEach(tagFilters) { item in
+                    UserFilterRow(
+                        filter: item,
+                        rename: rename,
+                        deleteTagAnotherMethod: deleteTagAnotherMethod
+                    )
                 }
+                .onDelete(perform: deleteTag)
             }
-            Section("Tags"){
-                ForEach(tagFilters){ item in
-                    NavigationLink(value: item){
-                        Label(item.name, systemImage: item.icon)
-                            .badge(item.activeIssueCount)
-                            .contextMenu{
-                                Button{
-                                    rename(item)
-                                }label:{
-                                    Label("Rename", systemImage: "pencil")
-                                }
-                                
-                                Button(role: .destructive){
-                                    deleteTagAnotherMethod(item)
-                                }label:{
-                                    Label("Delete", systemImage: "trash")
-                                }
-                            }
-                            .accessibilityElement()
-                            .accessibilityLabel(item.name)
-                            .accessibilityHint("\(item.activeIssueCount) issues")
-                    }
-                    
-                }.onDelete(perform: deleteTag)
-            }
-        }.toolbar{
-            Button{
-                isShowingAward.toggle()
-            }label:{
-                Label("Show Awards", systemImage: "rosette")
-            }
-            
-            Button(action: dataController.addNewTag){
-                Label("Add Tag", systemImage: "plus")
-            }
-        #if DEBUG
-            Button{
-                dataController.deleteAllData()
-                dataController.createSampleData()
-            }label: {
-                Label("ADD SAMPLES", systemImage: "flame")
-            }
-        #endif
         }
-        .alert("Rename Tag", isPresented: $isAlertForRenameTag){
+        .toolbar(content: SidebarViewToolbar.init)
+        .alert("Rename Tag", isPresented: $isAlertForRenameTag) {
             Button("OK", action: saveRenameTag)
-            Button("Cancel", role: .cancel){ }
+            Button("Cancel", role: .cancel) { }
             TextField("New Name", text: $tagNewName)
         }
-        .sheet(isPresented: $isShowingAward, content: AwardsView.init)
         .navigationTitle("Filters")
     }
 }

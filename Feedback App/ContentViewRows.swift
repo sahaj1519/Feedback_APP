@@ -13,13 +13,13 @@ struct ContentViewRows: View {
     @ObservedObject var issue: Issue
     
     var body: some View {
-        NavigationLink(value: issue){
-            HStack{
+        NavigationLink(value: issue) {
+            HStack {
                 
                 Image(systemName: "exclamationmark.circle")
                     .imageScale(.large)
                     .opacity(issue.priority == 2 ? 1 : 0)
-                VStack(alignment: .leading){
+                VStack(alignment: .leading) {
                     Text(issue.issueTitle)
                         .font(.headline)
                         .lineLimit(1)
@@ -31,12 +31,12 @@ struct ContentViewRows: View {
                 }
                 Spacer()
                 
-                VStack(alignment: .trailing){
+                VStack(alignment: .trailing) {
                     Text(issue.issueFormattedCreationDate)
                         .accessibilityLabel(issue.issueCreationDate.formatted(date: .abbreviated, time: .omitted))
                         .font(.subheadline)
                     
-                    if issue.isCompleted{
+                    if issue.isCompleted {
                         Text("CLOSED")
                             .font(.body.smallCaps())
                     }

@@ -7,45 +7,45 @@
 
 import SwiftUI
 
-extension Issue{
+extension Issue {
     
-    var issueTitle: String{
+    var issueTitle: String {
         get { title ?? "" }
-        set { title = newValue}
+        set { title = newValue }
     }
     
-    var issueContent: String{
-        get { content ?? ""}
-        set{ content = newValue}
+    var issueContent: String {
+        get { content ?? "" }
+        set { content = newValue }
     }
     
-    var issueCreationDate: Date{
+    var issueCreationDate: Date {
         creationDate ?? .now
     }
     
-    var issueModificationDate: Date{
+    var issueModificationDate: Date {
         modificationDate ?? .now
     }
     
-    var issueTag: [Tag]{
+    var issueTag: [Tag] {
         let result = tags?.allObjects as? [Tag] ?? []
         return result.sorted()
     }
     
-    var issueIsCompleted: String{
-        if isCompleted{
+    var issueIsCompleted: String {
+        if isCompleted {
             return "Closed"
-        }else{
+        } else {
             return "Open"
         }
     }
     
-    var issueTagList: String{
-        guard let tags else{ return "No tags"}
+    var issueTagList: String {
+        guard let tags else { return "No tags" }
         
         if tags.count == 0 {
             return "No tags"
-        }else{
+        } else {
             return issueTag.map(\.tagName).formatted()
         }
     }
@@ -68,15 +68,15 @@ extension Issue{
     }
 }
 
-extension Issue: Comparable{
+extension Issue: Comparable {
     
-    public static func <(lhs: Issue, rhs: Issue) -> Bool{
+    public static func < (lhs: Issue, rhs: Issue) -> Bool {
         let left = lhs.issueTitle.localizedLowercase
         let right = rhs.issueTitle.localizedLowercase
         
         if left == right {
             return lhs.issueCreationDate < rhs.issueCreationDate
-        }else{
+        } else {
             return left < right
         }
     }
