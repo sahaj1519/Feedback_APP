@@ -33,9 +33,16 @@
 		5D537EC72D958A75009B06DE /* Exceptions for "Feedback App" folder in "Feedback App" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Info.plist,
+				Configurations/Info.plist,
 			);
 			target = 5D537E9D2D958A73009B06DE /* Feedback App */;
+		};
+		5DD361A72D9A87F9008003CA /* Exceptions for "Feedback AppTests" folder in "Feedback AppTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Feedback App.xctestplan",
+			);
+			target = 5D537EB42D958A75009B06DE /* Feedback AppTests */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -50,6 +57,9 @@
 		};
 		5D537EB82D958A75009B06DE /* Feedback AppTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				5DD361A72D9A87F9008003CA /* Exceptions for "Feedback AppTests" folder in "Feedback AppTests" target */,
+			);
 			path = "Feedback AppTests";
 			sourceTree = "<group>";
 		};
@@ -206,6 +216,7 @@
 				en,
 				Base,
 				hu,
+				hi,
 			);
 			mainGroup = 5D537E952D958A73009B06DE;
 			minimizedProjectReferenceProxies = 1;
@@ -288,7 +299,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "Feedback App/Feedback_App.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Feedback App/Configurations/Feedback_App.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -298,7 +309,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Feedback App/Info.plist";
+				INFOPLIST_FILE = "Feedback App/Configurations/Info.plist";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -331,7 +342,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "Feedback App/Feedback_App.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Feedback App/Configurations/Feedback_App.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -341,7 +352,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Feedback App/Info.plist";
+				INFOPLIST_FILE = "Feedback App/Configurations/Info.plist";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;

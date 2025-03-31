@@ -9,37 +9,46 @@ import XCTest
 
 final class FeedbackAppUITests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    var app: XCUIApplication!
 
-        // In UI tests it is usually best to stop immediately when a failure occurs.
+    override func setUpWithError() throws {
         continueAfterFailure = false
 
-        // In UI tests it’s important to set the initial state -
-        // such as interface orientation - required for your tests before they run.
-        // The setUp method is a good place to do this.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    @MainActor
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
+        app = XCUIApplication()
+        app.launchArguments = ["enable-testing"]
         app.launch()
-
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 
-    @MainActor
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
+    // @MainActor
+    func testAppStartsWithNavigationBar() throws {
+        XCTAssertTrue(app.navigationBars.element.exists, "There should be a navigation bar when the app launches.")
+    }
+
+    func testAppHasBasicButtonsOnLaunch() throws {
+        XCTAssertTrue(app.navigationBars.buttons["Filters"].exists, "There should be a Filters button on launch.")
+        XCTAssertTrue(app.navigationBars.buttons["Filter"].exists, "There should be a Filters button on launch.")
+        XCTAssertTrue(app.navigationBars.buttons["New Issue"].exists, "There should be a Filters button on launch.")
+    }
+
+    func testNoIssuesAtStart() {
+        XCTAssertEqual(app.cells.count, 0, "There should be 0 list rows initially.")
+    }
+
+    func testCreatingAndDeletingIssues() {
+        for tapCount in 1...5 {
+            app.buttons["New Issue"].tap()
+            app.buttons["Issues"].tap()
+
+            XCTAssertEqual(app.cells.count, tapCount, "There should be \(tapCount) rows in the list.")
+        }
+
+        for tapCount in (0...4).reversed() {
+            app.cells.firstMatch.swipeLeft()
+            app.buttons["Delete"].tap()
+
+            XCTAssertEqual(app.cells.count, tapCount, "There should be \(tapCount) rows in the list.")
         }
     }
+
+    
 }

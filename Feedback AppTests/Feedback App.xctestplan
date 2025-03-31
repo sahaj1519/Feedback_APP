@@ -1,0 +1,38 @@
+{
+  "configurations" : [
+    {
+      "id" : "7E65C169-0A79-4E35-B097-FBE50D800011",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Feedback App.xcodeproj",
+      "identifier" : "5D537E9D2D958A73009B06DE",
+      "name" : "Feedback App"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:Feedback App.xcodeproj",
+        "identifier" : "5D537EB42D958A75009B06DE",
+        "name" : "Feedback AppTests"
+      }
+    },
+    {
+      "enabled" : false,
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:Feedback App.xcodeproj",
+        "identifier" : "5D537EBE2D958A75009B06DE",
+        "name" : "Feedback AppUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

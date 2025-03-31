@@ -1,0 +1,79 @@
+/* GENERAL STRINGS */
+"OK" = "ठीक है";
+"Cancel" = "रद्द करें";
+"Delete" = "हटाएं";
+"Rename" = "नाम बदलें";
+"Actions" = "क्रियाएँ";
+
+/* SIDEBARVIEW */
+"Filters" = "फिल्टर";
+"Smart Filters" = "स्मार्ट फिल्टर";
+"All Issues" = "सभी समस्याएँ";
+"Recent Issues" = "हाल की समस्याएँ";
+"Tags" = "टैग";
+"Add Tag" = "टैग जोड़ें";
+"Show Awards" = "पुरस्कार दिखाएँ";
+
+"Rename Tag" = "टैग का नाम बदलें";
+"New Name" = "नया नाम";
+
+/* CONTENTVIEW */
+"Issues" = "समस्याएँ";
+
+/* A button that shows a menu with the following options */
+"Filter" = "फिल्टर";
+"Turn Filter On" = "फिल्टर चालू करें"; /* Enables filtering */
+"Turn Filter Off" = "फिल्टर बंद करें"; /* Disables filtering */
+"Sort By" = "क्रमबद्ध करें"; /* Adjust the order issues are shown */
+"Date Created" = "बनाने की तिथि"; /* Sort issues by the date they were created */
+"Date Modified" = "संशोधित तिथि"; /* Sort issues by the date they were last changed */
+"Newest To Oldest" = "नवीनतम से प्राचीनतम"; /* Place newer issues before older issues */
+"Oldest To Newest" = "प्राचीनतम से नवीनतम"; /* Place older issues before newer issues */
+
+"All" = "सभी";
+"Open" = "खुला";
+"Closed" = "बंद";
+
+"Low" = "निम्न";
+"Medium" = "मध्यम";
+"High" = "उच्च";
+
+/* Create a new issue */
+"New Issue" = "नई समस्या";
+
+/* A text placeholder, to help users search */
+"Filter issues, or type # to add tags" = "समस्याओं को फ़िल्टर करें, या टैग जोड़ने के लिए # टाइप करें";
+
+/* Shown as a status for closed issues */
+"CLOSED" = "बंद";
+"" = "";
+
+/* DETAILSVIEW */
+"Details" = "विवरण";
+
+/* NOISSUEVIEW */
+"No Issue Selected" = "कोई समस्या चयनित नहीं";
+
+/* ISSUEVIEW */
+"Copy Issue Title" = "समस्या शीर्षक की प्रतिलिपि बनाएँ";
+"Close Issue" = "समस्या बंद करें";
+"Re-open Issue" = "समस्या फिर से खोलें";
+
+/* Fields that let the users enter details about a specific issue */
+"Enter the issue title here" = "यहाँ समस्या का शीर्षक दर्ज करें";
+"**Modified:** %@" = "**संशोधित:** %@";
+"**Status:** %@" = "**स्थिति:** %@";
+"Priority" = "प्राथमिकता";
+"Add Tags" = "टैग जोड़ें";
+"Basic Information" = "मूल जानकारी";
+"Enter the issue description here" = "यहाँ समस्या का विवरण दर्ज करें";
+
+/* AWARDS VIEW */
+"Awards" = "पुरस्कार";
+
+/* DATA */
+"New tag" = "नया टैग";
+"New issue" = "नई समस्या";
+
+/* DEBUG ONLY */
+"ADD SAMPLES" = "नमूने जोड़ें";
