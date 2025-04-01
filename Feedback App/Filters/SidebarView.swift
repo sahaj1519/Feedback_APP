@@ -8,94 +8,78 @@
 import SwiftUI
 
 /// A sidebar view that displays smart filters and user-defined tags for issue management.
+///
+/// This view consists of:
+/// - A **Smart Filters** section containing predefined filters.
+/// - A **Tags** section displaying user-created tags that can be renamed or deleted.
+/// - A **Toolbar** providing quick actions.
+/// - An **Alert** for renaming tags.
+///
+/// - Note: This view requires a `DataController` instance for Core Data operations.
 struct SidebarView: View {
     
-    /// Access to the shared data controller for managing Core Data operations.
-    @EnvironmentObject var dataController: DataController
-    
+    /// The view model responsible for handling tag-related operations.
+    @StateObject private var viewModel: ViewModel
+
     /// Predefined smart filters available for all users.
+    ///
+    /// These filters help users quickly access all issues or recent ones.
     let smartFilters: [Filter] = [.all, .recent]
     
-    /// Fetch request to retrieve tags from Core Data, sorted alphabetically by name.
-    @FetchRequest(sortDescriptors: [SortDescriptor(\.name)]) var tags: FetchedResults<Tag>
-    
-    /// The tag selected for renaming.
-    @State private var tagToRename: Tag?
-    
-    /// Boolean to control the display of the rename alert.
-    @State private var isAlertForRenameTag = false
-    
-    /// The new name entered by the user for renaming a tag.
-    @State private var tagNewName = ""
-
-    /// Converts fetched `Tag` objects into `Filter` instances for display in the UI.
-    var tagFilters: [Filter] {
-        tags.map { tag in
-            Filter(id: tag.tagId, name: tag.tagName, icon: "tag.fill", tag: tag)
-        }
-    }
-    
-    /// Deletes a tag based on its index in the list.
-    /// - Parameter offset: The index set of the tag(s) to be deleted.
-    func deleteTag(_ offset: IndexSet) {
-        for index in offset {
-            let item = tags[index]
-            dataController.deleteObject(object: item)
-        }
-    }
-    
-    /// Deletes a tag using an alternative method.
-    /// - Parameter filter: The filter representing the tag to be deleted.
-    func deleteTagAnotherMethod(_ filter: Filter) {
-        guard let tag = filter.tag else { return }
-        dataController.deleteObject(object: tag)
-        dataController.saveChanges()
-    }
-    
-    /// Prepares a tag for renaming.
-    /// - Parameter filter: The filter representing the tag to be renamed.
-    func rename(_ filter: Filter) {
-        tagToRename = filter.tag
-        tagNewName = filter.name
-        isAlertForRenameTag = true
-    }
-    
-    /// Saves the new name for the selected tag.
-    func saveRenameTag() {
-        tagToRename?.name = tagNewName
-        dataController.saveChanges()
+    /// Initializes the `SidebarView` with a `DataController`.
+    ///
+    /// - Parameter dataController: The `DataController` instance managing Core Data operations.
+    ///
+    /// This initializer:
+    /// 1. Creates an instance of `SidebarView.ViewModel`.
+    /// 2. Wraps the ViewModel inside a `StateObject` to ensure it's properly managed by SwiftUI.
+    init(dataController: DataController) {
+        let viewModel = ViewModel(dataController: dataController)
+        _viewModel = StateObject(wrappedValue: viewModel)
     }
     
     var body: some View {
-        List(selection: $dataController.selectedFilter) {
-            // Section for Smart Filters
+        List(selection: $viewModel.dataController.selectedFilter) {
+
+            /// **Smart Filters Section**
+            /// - Displays predefined filters that users can use to categorize issues.
             Section("Smart Filters") {
                 ForEach(smartFilters, content: SmartFilterRow.init)
             }
             
-            // Section for User-defined Tags
+            /// **Tags Section**
+            /// - Displays user-created tags.
+            /// - Allows renaming and deleting tags.
             Section("Tags") {
-                ForEach(tagFilters) { item in
+                ForEach(viewModel.tagFilters) { item in
                     UserFilterRow(
                         filter: item,
-                        rename: rename,
-                        deleteTagAnotherMethod: deleteTagAnotherMethod
+                        rename: viewModel.rename,
+                        deleteTagAnotherMethod: viewModel.deleteTagAnotherMethod
                     )
                 }
-                .onDelete(perform: deleteTag)
+                .onDelete(perform: viewModel.deleteTag) // Enables swipe-to-delete for tags.
             }
         }
-        .toolbar(content: SidebarViewToolbar.init)
-        .alert("Rename Tag", isPresented: $isAlertForRenameTag) {
-            Button("OK", action: saveRenameTag)
+        .toolbar(content: SidebarViewToolbar.init) // Adds toolbar actions.
+        
+        /// **Rename Tag Alert**
+        /// - Displays an alert when a tag is selected for renaming.
+        /// - Provides a text field to enter a new name.
+        /// - Includes "OK" and "Cancel" buttons.
+        .alert("Rename Tag", isPresented: $viewModel.isAlertForRenameTag) {
+            Button("OK", action: viewModel.saveRenameTag)
             Button("Cancel", role: .cancel) { }
-            TextField("New Name", text: $tagNewName)
+            TextField("New Name", text: $viewModel.tagNewName)
         }
+        
+        /// Sets the navigation title for the sidebar.
         .navigationTitle("Filters")
     }
 }
 
 #Preview {
-    SidebarView()
+    /// Provides a preview of `SidebarView` using a sample `DataController`.
+    SidebarView(dataController: .preview)
         .environmentObject(DataController.preview)
 }

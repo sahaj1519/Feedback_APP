@@ -27,7 +27,7 @@ struct AwardsView: View {
     
     /// Returns the title for the award detail alert,
     /// showing whether the award is unlocked or still locked.
-    var alertTitle: String {
+    var alertTitle: LocalizedStringKey {
         if dataController.hasEarned(award: selectedAward) {
             return "Unlocked: \(selectedAward.name)"
         } else {

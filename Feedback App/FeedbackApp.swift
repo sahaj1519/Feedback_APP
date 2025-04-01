@@ -20,9 +20,9 @@ struct FeedbackApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationSplitView {
-                SidebarView()  // Sidebar for navigation
+                SidebarView(dataController: dataController)  // Sidebar for navigation
             } content: {
-                ContentView()  // Main content view
+                ContentView(dataController: dataController)  // Main content view
             } detail: {
                 DetailView()  // Detail view for selected items
             }

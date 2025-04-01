@@ -9,49 +9,66 @@ import SwiftUI
 import CoreData
 
 /// The main view displaying a list of issues in the app.
+///
+/// This view provides:
+/// - A **list of issues** with support for selection and deletion.
+/// - A **search bar** for filtering issues based on text or tags.
+/// - A **toolbar** with sorting, filtering, and issue creation options.
+///
+/// - Note: This view requires a `DataController` to manage issue data.
 struct ContentView: View {
     
-    /// The shared data controller for managing Core Data operations and UI states.
-    @EnvironmentObject var dataController: DataController
+    /// The view model responsible for managing issue-related operations.
+    @StateObject private var viewModel: ViewModel
     
-    /// Deletes an issue from the list.
-    /// - Parameter offset: The index set of issues to delete.
-    func deleteIssue(_ offset: IndexSet) {
-        let issues = dataController.issueForSelectedFilter()
-        for index in offset {
-            let item = issues[index]
-            dataController.deleteObject(object: item)
-        }
+    /// Initializes the `ContentView` with a `DataController`.
+    ///
+    /// - Parameter dataController: The `DataController` instance responsible for handling Core Data operations.
+    ///
+    /// This initializer:
+    /// 1. Creates an instance of `ContentView.ViewModel`.
+    /// 2. Wraps the ViewModel inside a `StateObject` to ensure it's properly managed by SwiftUI.
+    init(dataController: DataController) {
+        let viewModel = ViewModel(dataController: dataController)
+        _viewModel = StateObject(wrappedValue: viewModel)
     }
     
     var body: some View {
-        /// A list of issues, supporting selection and deletion.
-        List(selection: $dataController.selectedIssue) {
+        /// **List of Issues**
+        /// - Displays all issues that match the selected filter.
+        /// - Supports selection and deletion.
+        List(selection: $viewModel.selectedIssue) {
             // Loops through filtered issues and displays each as a row.
-            ForEach(dataController.issueForSelectedFilter()) { item in
+            ForEach(viewModel.dataController.issueForSelectedFilter()) { item in
                 ContentViewRows(issue: item)
             }
-            .onDelete(perform: deleteIssue) // Enables swipe-to-delete functionality.
+            .onDelete(perform: viewModel.deleteIssue) // Enables swipe-to-delete functionality.
         }
-        .navigationTitle("Issues") // Sets the navigation bar title.
         
-        // Adds a search bar for filtering issues by text or tags.
+        /// **Navigation Title**
+        /// - Sets the navigation bar title to "Issues".
+        .navigationTitle("Issues")
+        
+        /// **Search Bar**
+        /// - Allows users to search issues by text or tags.
+        /// - Supports token-based filtering by typing `#` to add tags.
         .searchable(
-            text: $dataController.searchText,
-            tokens: $dataController.searchTokens,
-            suggestedTokens: .constant(dataController.suggestedSearchTokens),
+            text: $viewModel.searchText,
+            tokens: $viewModel.searchTokens,
+            suggestedTokens: .constant(viewModel.suggestedSearchTokens),
             prompt: "Filter issues, or type # to add tags"
         ) { tag in
             Text(tag.tagName) // Displays suggested tag names.
         }
         
-        // Adds the toolbar containing sorting, filtering, and issue creation options.
+        /// **Toolbar**
+        /// - Contains options for sorting, filtering, and creating new issues.
         .toolbar(content: ContentViewToolbar.init)
     }
 }
 
 #Preview {
-    /// A preview of `ContentView`, using a preview data controller.
-    ContentView()
+    /// Provides a preview of `ContentView` using a sample `DataController`.
+    ContentView(dataController: .preview)
         .environmentObject(DataController.preview)
 }

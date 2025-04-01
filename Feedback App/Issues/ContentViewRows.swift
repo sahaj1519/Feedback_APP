@@ -9,33 +9,46 @@ import CoreData
 import SwiftUI
 
 /// A view representing a single row in the issue list, displaying issue details.
+///
+/// This row includes:
+/// - An **icon indicator** for high-priority issues.
+/// - The **issue title** and its **associated tags**.
+/// - The **issue creation date** and completion status (`CLOSED` label).
 struct ContentViewRows: View {
     
-    /// The shared data controller for managing Core Data operations.
+    /// The shared data controller that manages Core Data operations.
     @EnvironmentObject var dataController: DataController
     
-    /// The issue object being displayed.
-    @ObservedObject var issue: Issue
+    /// The ViewModel responsible for managing issue-related data.
+    @StateObject private var viewModel: ViewModel
+    
+    /// Initializes the `ContentViewRows` with a specific issue.
+    ///
+    /// - Parameter issue: The `Issue` object representing a single issue.
+    init(issue: Issue) {
+        let viewModel = ViewModel(issue: issue)
+        _viewModel = StateObject(wrappedValue: viewModel)
+    }
     
     var body: some View {
         /// A navigation link that allows users to select an issue and view its details.
-        NavigationLink(value: issue) {
+        NavigationLink(value: viewModel.issue) {
             HStack {
                 
-                // High-priority indicator: Displays an exclamation mark
-                // if the issue is of high priority (priority == 2).
+                // Displays an exclamation mark if the issue has high priority (priority == 2).
                 Image(systemName: "exclamationmark.circle")
                     .imageScale(.large)
-                    .opacity(issue.priority == 2 ? 1 : 0)
-                
+                    .opacity(viewModel.iconOpacity)
+                    .accessibilityIdentifier(viewModel.iconIdentifier)
+
                 VStack(alignment: .leading) {
-                    // The issue title, limited to one line to maintain layout consistency.
-                    Text(issue.issueTitle)
+                    // The issue title, limited to one line for layout consistency.
+                    Text(viewModel.issueTitle)
                         .font(.headline)
                         .lineLimit(1)
                     
-                    // Displays a list of tags associated with the issue, shown in secondary color.
-                    Text(issue.issueTagList)
+                    // A secondary-colored text showing associated tags.
+                    Text(viewModel.issueTagList)
                         .foregroundStyle(.secondary)
                         .lineLimit(1)
                 }
@@ -43,13 +56,13 @@ struct ContentViewRows: View {
                 Spacer() // Pushes elements to the edges of the row.
                 
                 VStack(alignment: .trailing) {
-                    // The issue creation date, formatted and accessible for screen readers.
-                    Text(issue.issueFormattedCreationDate)
-                        .accessibilityLabel(issue.issueCreationDate.formatted(date: .abbreviated, time: .omitted))
+                    // Displays the issue's creation date in a formatted way.
+                    Text(viewModel.creationDate)
+                        .accessibilityLabel(viewModel.accessibilityCreationDate)
                         .font(.subheadline)
                     
                     // Displays "CLOSED" if the issue has been marked as completed.
-                    if issue.isCompleted {
+                    if viewModel.isCompleted {
                         Text("CLOSED")
                             .font(.body.smallCaps())
                     }
@@ -57,8 +70,9 @@ struct ContentViewRows: View {
                 .foregroundStyle(.secondary)
             }
         }
-        // Adds an accessibility hint for high-priority issues.
-        .accessibilityHint(issue.priority == 2 ? "High Priority" : "")
+        // Adds an accessibility hint for screen readers about issue priority.
+        .accessibilityHint(viewModel.accessibilityHint)
+        .accessibilityIdentifier(viewModel.issueTitle)
     }
 }
 

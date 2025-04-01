@@ -7,6 +7,7 @@
 /// - Supports batch deletion and remote store updates.
 
 import CoreData
+import SwiftUI
 
 /// Enumeration representing sorting options for issues.
 enum SortType: String {
@@ -115,6 +116,7 @@ class DataController: ObservableObject {
                 #if DEBUG
                  if CommandLine.arguments.contains("enable-testing") {
                      self.deleteAllData()
+                     UIView.setAnimationsEnabled(false)
                 }
                 #endif
             }

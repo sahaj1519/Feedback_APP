@@ -7,30 +7,49 @@
 
 import SwiftUI
 
-/// Extension to provide computed properties and utility functions for the `Tag` entity in Core Data.
+/// **Core Data Helper Extension for `Tag`**
+///
+/// This extension provides computed properties and utility functions for the `Tag` Core Data entity.
+/// The methods in this extension allow you to easily retrieve and update the tag's identifier, name, associated issues,
+/// and other properties related to tags. This also includes an example `Tag` instance for use in SwiftUI previews
+/// and a sorting function to compare and order tags.
+///
+/// - SeeAlso: `Tag`, `Issue`
 extension Tag {
     
-    /// Returns the unique identifier (`UUID`) of the tag.
-    /// If `id` is nil, it generates a new `UUID`.
+    /// **Tag Identifier**
+    ///
+    /// Retrieves the unique identifier of the tag. If `id` is nil, a new `UUID` is generated and returned.
+    ///
+    /// - Returns: The tag's unique identifier (`UUID`).
     var tagId: UUID {
         id ?? UUID()
     }
     
-    /// Returns the name of the tag.
-    /// If `name` is nil, it returns an empty string.
+    /// **Tag Name**
+    ///
+    /// Retrieves or sets the name of the tag. If `name` is nil, it defaults to an empty string.
+    ///
+    /// - Returns: The tag's name as a `String`.
     var tagName: String {
         name ?? ""
     }
     
-    /// Returns an array of incomplete issues associated with this tag.
-    /// Filters out completed issues.
+    /// **Incomplete Issues Associated with the Tag**
+    ///
+    /// Retrieves an array of issues associated with this tag, excluding completed issues.
+    ///
+    /// - Returns: An array of `Issue` objects that are incomplete and associated with this tag.
     var tagIssue: [Issue] {
         let result = issues?.allObjects as? [Issue] ?? []
         return result.filter { !$0.isCompleted }
     }
     
-    /// Creates an example `Tag` instance for SwiftUI previews and testing.
-    /// - Returns: A sample `Tag` object stored in an in-memory Core Data context.
+    /// **Example `Tag` instance for SwiftUI previews**
+    ///
+    /// This method creates a sample `Tag` object that is stored in an in-memory Core Data context.
+    ///
+    /// - Returns: A sample `Tag` object for use in previews and testing.
     static var example: Tag {
         let controller = DataController(inMemory: true)
         let context = controller.container.viewContext
@@ -42,12 +61,20 @@ extension Tag {
     }
 }
 
-/// Extension to make `Tag` conform to `Comparable`, enabling sorting.
+/// **Sorting Support for `Tag`**
+///
+/// This extension makes `Tag` conform to `Comparable`, allowing tags to be compared and sorted using Swift's `<` operator.
 extension Tag: Comparable {
     
-    /// Compares two tags for sorting.
-    /// - Tags are sorted alphabetically (case-insensitive).
-    /// - If two tags have the same name, they are sorted by their `UUID` to ensure a stable order.
+    /// **Sorting Logic for `Tag` Objects**
+    ///
+    /// Tags are sorted alphabetically by their name (case-insensitive). If two tags have the same name,
+    /// they are sorted by their unique identifier (`UUID`) to ensure a stable order.
+    ///
+    /// - Parameters:
+    ///   - lhs: The left-hand side `Tag` object to compare.
+    ///   - rhs: The right-hand side `Tag` object to compare.
+    /// - Returns: A Boolean value indicating whether the left tag should be ordered before the right tag.
     public static func < (lhs: Tag, rhs: Tag) -> Bool {
         let left = lhs.tagName.localizedLowercase
         let right = rhs.tagName.localizedLowercase
