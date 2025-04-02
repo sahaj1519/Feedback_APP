@@ -75,6 +75,14 @@
 "Basic Information" = "Alapinformáció";
 "Enter the issue description here" = "Írja be a probléma leírását ide";
 
+/* REMINDERS */
+"Reminders" = "Emlékeztetők";
+"Show reminders" = "Emlékeztetők megjelenítése";
+"Oops!" = "Hoppá!";
+"There was a problem setting your notification. Please check you have notifications enabled." = "Probléma merült fel az értesítés beállításakor. Kérjük, ellenőrizze, hogy az értesítések engedélyezve vannak-e.";
+"Check Settings" = "Ellenőrizze a Beállításokat";
+"Reminder time" = "Emlékeztető ideje";
+
 
 
 /* AWARDS VIEW */

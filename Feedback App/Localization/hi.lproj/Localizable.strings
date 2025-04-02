@@ -69,6 +69,15 @@
 "Basic Information" = "मूल जानकारी";
 "Enter the issue description here" = "यहाँ समस्या का विवरण दर्ज करें";
 
+/* REMINDERS */
+"Reminders" = "अनुस्मारक";
+"Show reminders" = "अनुस्मारक दिखाएं";
+"Oops!" = "अरे!";
+"There was a problem setting your notification. Please check you have notifications enabled." = "आपकी अधिसूचना सेट करने में समस्या हुई। कृपया जांचें कि आपने अधिसूचनाएं सक्षम की हैं।";
+"Check Settings" = "सेटिंग्स जांचें";
+"Reminder time" = "अनुस्मारक समय";
+
+
 /* AWARDS VIEW */
 "Awards" = "पुरस्कार";
 "Locked" = "लॉक किया गया";

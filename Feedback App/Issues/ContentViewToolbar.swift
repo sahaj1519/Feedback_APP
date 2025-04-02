@@ -32,9 +32,9 @@ struct ContentViewToolbar: View {
                 Divider() // Adds a visual separator between sections.
                 
                 // Picker for selecting sorting order (newest to oldest or vice versa).
-                Picker("Sort Order", selection: $dataController.sortNewestFirst) {
-                    Text("Newest To Oldest").tag(true)
-                    Text("Oldest To Newest").tag(false)
+                Picker("Sort Order", selection: $dataController.sortOldestFirst) {
+                    Text("Newest To Oldest").tag(false)
+                    Text("Oldest To Newest").tag(true)
                 }
             }
             

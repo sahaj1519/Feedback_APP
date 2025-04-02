@@ -75,6 +75,14 @@
 "Basic Information" = "Basic Information";
 "Enter the issue description here" = "Enter the issue description here";
 
+/* REMINDERS */
+"Reminders" = "Reminders";
+"Show reminders" = "Show reminders";
+"Oops!" = "Oops!";
+"There was a problem setting your notification. Please check you have notifications enabled." = "There was a problem setting your notification. Please check you have notifications enabled.";
+"Check Settings" = "Check Settings";
+"Reminder time" = "Reminder time";
+
 
 
 /* AWARDS VIEW */
@@ -92,4 +100,5 @@
 
 /* DEBUG ONLY */
 "ADD SAMPLES" = "ADD SAMPLES";
+
 

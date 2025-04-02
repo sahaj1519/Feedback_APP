@@ -4,7 +4,7 @@
 //
 //  Created by Ajay Sangwan on 27/03/25.
 //
-
+import CoreSpotlight
 import SwiftUI
 
 /// The main entry point of the Feedback App.
@@ -16,6 +16,13 @@ struct FeedbackApp: App {
     
     /// The current scene phase, used to detect app state changes.
     @Environment(\.scenePhase) var scenePhase
+    
+    func loadSpotlightItem(_ userActivity: NSUserActivity) {
+        if let uniqueIdentifier = userActivity.userInfo?[CSSearchableItemActivityIdentifier] as? String {
+            dataController.selectedIssue = dataController.spotlightsearchissue(with: uniqueIdentifier)
+            dataController.selectedFilter = .all
+        }
+    }
 
     var body: some Scene {
         WindowGroup {
@@ -33,6 +40,7 @@ struct FeedbackApp: App {
                     dataController.saveChanges()
                 }
             }
+            .onContinueUserActivity(CSSearchableItemActionType, perform: loadSpotlightItem)
         }
     }
 }
