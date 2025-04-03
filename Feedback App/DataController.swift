@@ -7,6 +7,7 @@
 /// - Supports batch deletion and remote store updates.
 
 import CoreData
+import StoreKit
 import SwiftUI
 
 /// Enumeration representing sorting options for issues.
@@ -51,8 +52,13 @@ class DataController: ObservableObject {
     /// Sort order (true for newest first, false for oldest first).
     @Published var sortOldestFirst = false
     
+    @Published var products = [Product]()
+    
     /// Background save task to optimize performance.
     private var saveTask: Task<Void, Error>?
+    var storeTask: Task<Void, Never>?
+    
+    let defaults: UserDefaults
     
     /// Preview instance for SwiftUI previews, preloaded with sample data.
     static var preview: DataController  = {
@@ -95,9 +101,15 @@ class DataController: ObservableObject {
     
     /// Initializes the Core Data stack.
     /// - Parameter inMemory: A flag to indicate if an in-memory store should be used (for previews/testing).
-    init(inMemory: Bool = false) {
+    init(inMemory: Bool = false, defaults: UserDefaults = .standard) {
+        self.defaults = defaults
+        
         // Create a persistent container using the loaded model
         container = NSPersistentCloudKitContainer(name: "Model", managedObjectModel: DataController.model)
+        
+        storeTask = Task {
+            await monitorTransaction()
+        }
         
         // Configure an in-memory store if requested (used for previews and unit tests)
         if inMemory {
@@ -378,13 +390,20 @@ class DataController: ObservableObject {
     
     
     /// Adds a new tag to Core Data.
-    func addNewTag() {
+    func addNewTag() -> Bool {
+        var shouldCreate = fullVersionUnlocked
+        if shouldCreate == false {
+            shouldCreate = count(for: Tag.fetchRequest()) < 3
+        }
+        
+        guard shouldCreate else { return false }
         let tag = Tag(context: container.viewContext)
         
         tag.id = UUID()
         tag.name = NSLocalizedString("New tag", comment: "Create a new tag")
         
         saveChanges()
+        return true
     }
     
     /// Counts the number of objects for a given fetch request.
@@ -409,6 +428,9 @@ class DataController: ObservableObject {
             
         case "tags":
             return count(for: Tag.fetchRequest()) >= award.value
+            
+        case "unlock":
+            return fullVersionUnlocked
             
         default:
             return false

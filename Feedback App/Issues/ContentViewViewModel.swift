@@ -27,6 +27,10 @@ extension ContentView {
         /// The shared `DataController` instance used to interact with Core Data.
         var dataController: DataController
         
+        var shouldRequestReview: Bool {
+            dataController.count(for: Tag.fetchRequest()) >= 5
+        }
+        
         /// Initializes the `ViewModel` with a given `DataController`.
         ///
         /// - Parameter dataController: The `DataController` instance responsible for Core Data operations.

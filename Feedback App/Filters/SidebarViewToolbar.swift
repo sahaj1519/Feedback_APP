@@ -15,6 +15,13 @@ struct SidebarViewToolbar: View {
     
     /// A state variable that determines whether the awards sheet is displayed.
     @State private var isShowingAward = false
+    @State private var isShowingStore = false
+    
+    func tryNewTag() {
+        if dataController.addNewTag() == false {
+            isShowingStore = true
+        }
+    }
     
     var body: some View {
         // Button to toggle the Awards view
@@ -26,9 +33,10 @@ struct SidebarViewToolbar: View {
         .sheet(isPresented: $isShowingAward, content: AwardsView.init)
         
         // Button to add a new tag using DataController's method
-        Button(action: dataController.addNewTag) {
+        Button(action: tryNewTag) {
             Label("Add Tag", systemImage: "plus")
         }
+        .sheet(isPresented: $isShowingStore, content: StoreView.init)
         
         // Debug-only button for deleting all data and creating sample data
         #if DEBUG

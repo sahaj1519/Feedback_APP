@@ -21,6 +21,8 @@ struct ContentView: View {
     /// The view model responsible for managing issue-related operations.
     @StateObject private var viewModel: ViewModel
     
+    @Environment(\.requestReview) var requestReview
+    
     /// Initializes the `ContentView` with a `DataController`.
     ///
     /// - Parameter dataController: The `DataController` instance responsible for handling Core Data operations.
@@ -31,6 +33,12 @@ struct ContentView: View {
     init(dataController: DataController) {
         let viewModel = ViewModel(dataController: dataController)
         _viewModel = StateObject(wrappedValue: viewModel)
+    }
+    
+    func askForReview() {
+        if viewModel.shouldRequestReview {
+            requestReview()
+        }
     }
     
     var body: some View {
@@ -64,6 +72,7 @@ struct ContentView: View {
         /// **Toolbar**
         /// - Contains options for sorting, filtering, and creating new issues.
         .toolbar(content: ContentViewToolbar.init)
+        .onAppear(perform: askForReview)
     }
 }
 

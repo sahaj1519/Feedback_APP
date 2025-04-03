@@ -75,13 +75,26 @@
 "Oops!" = "अरे!";
 "There was a problem setting your notification. Please check you have notifications enabled." = "आपकी अधिसूचना सेट करने में समस्या हुई। कृपया जांचें कि आपने अधिसूचनाएं सक्षम की हैं।";
 "Check Settings" = "सेटिंग्स जांचें";
-"Reminder time" = "अनुस्मारक समय";
+"Reminder Time" = "अनुस्मारक समय";
 
 
 /* AWARDS VIEW */
 "Awards" = "पुरस्कार";
 "Locked" = "लॉक किया गया";
 "Unlocked: %@" = "अनलॉक किया गया: %@";
+
+
+
+/* STORE */
+"Upgrade Today!" = "आज ही अपग्रेड करें!";
+"Get the most out of the app" = "ऐप का पूरा लाभ उठाएं";
+"Fetching offers…" = "ऑफ़र प्राप्त किए जा रहे हैं...";
+"Sorry, there was an error loading our store." = "क्षमा करें, हमारी स्टोर लोड करते समय एक त्रुटि हुई।";
+"Try Again" = "फिर से प्रयास करें";
+"Restore Purchases" = "खरीदारी पुनर्स्थापित करें";
+"In-app purchases are disabled" = "ऐप के अंदर खरीदारी अक्षम है";
+"You can't purchase the premium unlock because in-app purchases are disabled on this device.\n\nPlease ask whomever manages your device for assistance." = "आप प्रीमियम अनलॉक नहीं खरीद सकते क्योंकि इस डिवाइस पर इन-एप खरीदारी अक्षम है।\n\nकृपया सहायता के लिए अपने डिवाइस के प्रबंधक से संपर्क करें।";
+
 
 /* DATA */
 "New tag" = "नया टैग";
