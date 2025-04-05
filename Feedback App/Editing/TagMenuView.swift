@@ -26,6 +26,9 @@ struct TagMenuView: View {
     @ObservedObject var issue: Issue
     
     var body: some View {
+        #if os(watchOS)
+        LabeledContent("Tags", value: issue.issueTagList)
+        #else
         Menu {
             /// **Displays assigned tags with a checkmark**
             ///
@@ -69,6 +72,7 @@ struct TagMenuView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .animation(nil, value: issue.issueTagList)
         }
+        #endif
     }
 }
 

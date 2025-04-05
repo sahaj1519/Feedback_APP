@@ -29,6 +29,8 @@
 "Turn Filter On" = "Szűrő bekapcsolása"; /* Enables filtering */
 "Turn Filter Off" = "Szűrő kikapcsolása"; /* Disables filtering */
 "Sort By" = "Rendezés"; /* Adjust the order issues are shown */
+"Status" = "Állapot";
+"Sort Order" = "Rendezési sorrend";
 "Date Created" = "Létrehozás dátuma"; /* Sort issues by the date they were created */
 "Date Modified" = "Módosítás dátuma"; /* Sort issues by the date they were last changed */
 "Newest To Oldest" = "Legújabbtól a legrégebbig"; /* Place newer issues before older issues */
@@ -67,12 +69,14 @@
 "Re-open Issue" = "Probléma újranyitása";
 
 /* Fields that let the users enter details about a specific issue */
+"Title" = "Cím";
 "Enter the issue title here" = "Írja be a probléma címét ide";
 "**Modified:** %@" = "**Módosítva:** %@";
 "**Status:** %@" = "**Állapot:** %@";
 "Priority" = "Prioritás";
 "Add Tags" = "Címkék hozzáadása";
 "Basic Information" = "Alapinformáció";
+"Description" = "Leírás";
 "Enter the issue description here" = "Írja be a probléma leírását ide";
 
 /* REMINDERS */
@@ -86,6 +90,7 @@
 
 
 /* AWARDS VIEW */
+"Close" = "Bezár";
 "Awards" = "Díjak";
 "Locked" = "Zárolt";
 "Unlocked: %@" = "Feloldott: %@";
@@ -101,6 +106,15 @@
 "Restore Purchases" = "Vásárlások helyreállítása";
 "In-app purchases are disabled" = "Az alkalmazáson belüli vásárlások tiltva vannak";
 "You can't purchase the premium unlock because in-app purchases are disabled on this device.\n\nPlease ask whomever manages your device for assistance." = "Nem vásárolhatja meg a prémium feloldást, mert az alkalmazáson belüli vásárlások letiltva vannak ezen az eszközön.\n\nKérjük, keresse az eszközét kezelő személy segítségét.";
+
+
+
+
+/* WIDGETS */
+"Up next…" = "Következő…";
+"Nothing!" = "Semmi!";
+"Your #1 top-priority issue." = "Az #1 elsőbbségi probléma.";
+"Your most important issues." = "A legfontosabb problémáid.";
 
 
 

@@ -81,7 +81,8 @@ extension DataController {
     /// - Note:
     ///   - The notification will include the issue title and (if available) issue content.
     ///   - The notification is currently set to trigger after 5 seconds for testing.
-    ///   - In production, the commented-out `UNCalendarNotificationTrigger` can be used to schedule reminders based on a specific time.
+    ///   - In production, the commented-out `UNCalendarNotificationTrigger`
+    ///     can be used to schedule reminders based on a specific time.
     private func placeReminders(for issue: Issue) async throws {
         let content = UNMutableNotificationContent()
         content.title = issue.issueTitle

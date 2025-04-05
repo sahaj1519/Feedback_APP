@@ -10,14 +10,17 @@ import SwiftUI
 
 /// A detailed view for displaying and editing an issue's information.
 ///
-/// This view provides a comprehensive interface for users to view and modify an issue's details, including the title, description, priority, and tags.
-/// In addition, it displays metadata such as the last modification date and completion status, and it includes reminder functionality.
+/// This view provides a comprehensive interface for users to view and modify an issue's details,
+/// including the title, description, priority, and tags.
+/// In addition, it displays metadata such as the last modification date and
+/// completion status, and it includes reminder functionality.
 /// Toolbar actions are provided to facilitate additional issue-specific operations.
 struct DetailViewWithIssue: View {
     
     /// The shared data controller responsible for managing app data.
     ///
-    /// This environment object is used to save and track changes in Core Data as well as to manage notification reminders.
+    /// This environment object is used to save and track changes in
+    /// Core Data as well as to manage notification reminders.
     @EnvironmentObject var dataController: DataController
     
     /// The environment's URL opener.
@@ -37,17 +40,25 @@ struct DetailViewWithIssue: View {
     
     /// Opens the app's notification settings.
     ///
-    /// This function constructs the URL for the system's notification settings and uses the environment's URL opener to navigate there.
+    /// This function constructs the URL for the system's notification settings
+    /// and uses the environment's URL opener to navigate there.
+    #if os(iOS)
     func showAppSetting() {
-        guard let settingUrl = URL(string: UIApplication.openNotificationSettingsURLString) else { return }
+        guard let settingUrl = URL(
+            string: UIApplication.openNotificationSettingsURLString
+        ) else {
+            return
+        }
         openURL(settingUrl)
     }
+    #endif
     
     /// Updates the reminder notification for the issue.
     ///
     /// This function first removes any existing reminders for the issue.
     /// If reminders are enabled, it then attempts to add a new reminder via the data controller.
-    /// In case of a failure (e.g., due to missing permissions), the reminder is disabled and an error alert is triggered.
+    /// In case of a failure (e.g., due to missing permissions),
+    /// the reminder is disabled and an error alert is triggered.
     func updateReminder() {
         dataController.removeReminders(for: issue)
         
@@ -87,6 +98,7 @@ struct DetailViewWithIssue: View {
                     /// Allows users to edit the issue title with a large title font for emphasis.
                     TextField("Title", text: $issue.issueTitle, prompt: Text("Enter the issue title here"))
                         .font(.title)
+                        .labelsHidden()
                     
                     /// Displays the last modification date.
                     ///
@@ -138,13 +150,15 @@ struct DetailViewWithIssue: View {
                         prompt: Text("Enter the issue description here"),
                         axis: .vertical
                     )
+                    .labelsHidden()
                 }
             }
             
             /// **Reminders section**
             ///
             /// Contains controls for managing reminder notifications.
-            /// A toggle is provided to enable or disable reminders, and if enabled, a date picker allows the user to select a reminder time.
+            /// A toggle is provided to enable or disable reminders, and
+            /// if enabled, a date picker allows the user to select a reminder time.
             Section("Reminders") {
                 Toggle("Show reminders", isOn: $issue.reminderEnabled.animation())
                 
@@ -157,6 +171,7 @@ struct DetailViewWithIssue: View {
                 }
             }
         }
+        .formStyle(.grouped)
         /// Disables the form if the issue is deleted.
         .disabled(issue.isDeleted)
         
@@ -164,7 +179,7 @@ struct DetailViewWithIssue: View {
         ///
         /// Observes changes to the issue and schedules a save operation using the data controller.
         .onReceive(issue.objectWillChange) { _ in
-            dataController.queueSave()
+            dataController.saveChanges()
         }
         
         /// Saves changes when the form is submitted.
@@ -183,7 +198,13 @@ struct DetailViewWithIssue: View {
         /// Displays an alert when there is a problem setting the notification.
         /// Provides options to check the notification settings or cancel.
         .alert("Oops!", isPresented: $isShowingNotificationError) {
+          #if os(macOS)
+            SettingsLink {
+                Text("Check Settings")
+            }
+          #elseif os(iOS)
             Button("Check Settings", action: showAppSetting)
+          #endif
             Button("Cancel", role: .cancel) { }
         } message: {
             Text("There was a problem setting your notification. Please check you have notifications enabled.")
@@ -201,7 +222,8 @@ struct DetailViewWithIssue: View {
 
 /// Previews `DetailViewWithIssue` with example data.
 ///
-/// This preview provides a live view of the `DetailViewWithIssue` using a sample issue and an in-memory data controller for testing.
+/// This preview provides a live view of the `DetailViewWithIssue`
+/// using a sample issue and an in-memory data controller for testing.
 #Preview {
     DetailViewWithIssue(issue: .example)
         .environmentObject(DataController(inMemory: true))

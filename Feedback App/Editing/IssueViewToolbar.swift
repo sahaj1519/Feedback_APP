@@ -4,8 +4,9 @@
 //
 //  Created by Ajay Sangwan on 30/03/25.
 //
-
+#if canImport(CoreSpotlight)
 import CoreHaptics
+#endif
 import SwiftUI
 
 /// A toolbar menu for managing an issue, providing actions such as copying the issue title
@@ -39,10 +40,12 @@ struct IssueViewToolbar: View {
     @ObservedObject var issue: Issue
     
     /// The haptic engine for generating feedback effects.
+    #if canImport(CoreSpotlight)
     @State private var engine = try? CHHapticEngine()
+    #endif
     
     /// Determines the text for the open/close issue button based on its completion status.
-    var openCloseButtonText: String {
+    var openCloseButtonText: LocalizedStringKey {
         issue.isCompleted ? "Re-open Issue" : "Close Issue"
     }
     
@@ -53,12 +56,14 @@ struct IssueViewToolbar: View {
     /// 2. Saves the change using `dataController.saveChanges()`.
     /// 3. Attempts to generate a haptic feedback pattern.
     func toggleIsCompleted() {
-            // Toggle the issue's completion status
-            issue.isCompleted.toggle()
-            
-            // Save the updated status to persistent storage
-            dataController.saveChanges()
-            
+        // Toggle the issue's completion status
+        issue.isCompleted.toggle()
+        
+        // Save the updated status to persistent storage
+        dataController.saveChanges()
+        
+       #if canImport(CoreSpotlight)
+        if issue.isCompleted {
             do {
                 // Start the haptic engine if not already running
                 try engine?.start()
@@ -110,20 +115,27 @@ struct IssueViewToolbar: View {
                 // This ensures the app does not crash if the device does not support haptics
             }
         }
+        #endif
+    }
+    
+    func copyToClipboard() {
+        #if os(iOS)
+        UIPasteboard.general.string = issue.title
+        #elseif os(macOS)
+        NSPasteboard.general.prepareForNewContents()
+        NSPasteboard.general.setString(issue.issueTitle, forType: .string)
+        #endif
+    }
     /// The body of the toolbar view, displaying a menu with available actions.
     ///
     /// The menu includes:
     /// - **Copy Issue Title:** Copies the issue title to the clipboard.
     /// - **Toggle Completion Status:** Marks the issue as completed or re-opens it.
     var body: some View {
+       #if !os(watchOS)
         Menu {
             // Button to copy the issue title to the clipboard
-            Button {
-                UIPasteboard.general.string = issue.title
-            } label: {
-                Label("Copy Issue Title", systemImage: "doc.on.doc")
-            }
-            
+            Button("Copy Issue Title", systemImage: "doc.on.doc", action: copyToClipboard)
             // Button to toggle issue completion status and save the change
             Button {
                toggleIsCompleted()
@@ -134,6 +146,7 @@ struct IssueViewToolbar: View {
         } label: {
             Label("Actions", systemImage: "ellipsis.circle")
         }
+        #endif
     }
 }
 

@@ -25,6 +25,8 @@
 "Turn Filter On" = "फिल्टर चालू करें"; /* Enables filtering */
 "Turn Filter Off" = "फिल्टर बंद करें"; /* Disables filtering */
 "Sort By" = "क्रमबद्ध करें"; /* Adjust the order issues are shown */
+"Status" = "स्थिति";
+"Sort Order" = "क्रमबद्ध क्रम";
 "Date Created" = "बनाने की तिथि"; /* Sort issues by the date they were created */
 "Date Modified" = "संशोधित तिथि"; /* Sort issues by the date they were last changed */
 "Newest To Oldest" = "नवीनतम से प्राचीनतम"; /* Place newer issues before older issues */
@@ -61,12 +63,14 @@
 "Re-open Issue" = "समस्या फिर से खोलें";
 
 /* Fields that let the users enter details about a specific issue */
+"Title" = "शीर्षक";
 "Enter the issue title here" = "यहाँ समस्या का शीर्षक दर्ज करें";
 "**Modified:** %@" = "**संशोधित:** %@";
 "**Status:** %@" = "**स्थिति:** %@";
 "Priority" = "प्राथमिकता";
 "Add Tags" = "टैग जोड़ें";
 "Basic Information" = "मूल जानकारी";
+"Description" = "विवरण";
 "Enter the issue description here" = "यहाँ समस्या का विवरण दर्ज करें";
 
 /* REMINDERS */
@@ -79,6 +83,7 @@
 
 
 /* AWARDS VIEW */
+"Close" = "बंद करें";
 "Awards" = "पुरस्कार";
 "Locked" = "लॉक किया गया";
 "Unlocked: %@" = "अनलॉक किया गया: %@";
@@ -94,6 +99,16 @@
 "Restore Purchases" = "खरीदारी पुनर्स्थापित करें";
 "In-app purchases are disabled" = "ऐप के अंदर खरीदारी अक्षम है";
 "You can't purchase the premium unlock because in-app purchases are disabled on this device.\n\nPlease ask whomever manages your device for assistance." = "आप प्रीमियम अनलॉक नहीं खरीद सकते क्योंकि इस डिवाइस पर इन-एप खरीदारी अक्षम है।\n\nकृपया सहायता के लिए अपने डिवाइस के प्रबंधक से संपर्क करें।";
+
+
+
+/* WIDGETS */
+"Up next…" = "आगामी…";
+"Nothing!" = "कुछ नहीं!";
+"Your #1 top-priority issue." = "आपकी #1 सर्वोच्च प्राथमिकता वाली समस्या।";
+"Your most important issues." = "आपकी सबसे महत्वपूर्ण समस्याएँ।";
+
+
 
 
 /* DATA */

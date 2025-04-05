@@ -19,7 +19,7 @@ extension ContentView {
     ///
     /// - Features:
     ///   - Provides access to the shared `DataController` for handling Core Data operations.
-    ///   - Implements a **dynamic member lookup** to access `DataController` properties.
+    ///   - Implements **dynamic member lookup** to access `DataController` properties.
     ///   - Supports **issue deletion** from the list.
     @dynamicMemberLookup
     class ViewModel: ObservableObject {
@@ -27,8 +27,22 @@ extension ContentView {
         /// The shared `DataController` instance used to interact with Core Data.
         var dataController: DataController
         
+        /// Determines whether the app should request an App Store review.
+        ///
+        /// - The app prompts for a review once at least **five tags** exist in Core Data.
+        /// - Returns `true` if the tag count is 5 or more; otherwise, `false`.
         var shouldRequestReview: Bool {
-            dataController.count(for: Tag.fetchRequest()) >= 5
+            if dataController.count(for: Tag.fetchRequest()) >= 5 {
+                
+                let reviewRequestCount = UserDefaults.standard.integer(forKey: "reviewRequestCount")
+                UserDefaults.standard.set(reviewRequestCount + 1, forKey: "reviewRequestCount")
+                
+                if reviewRequestCount.isMultiple(of: 10) {
+                    return true
+                }
+            }
+            return false
+            
         }
         
         /// Initializes the `ViewModel` with a given `DataController`.
@@ -77,5 +91,16 @@ extension ContentView {
                 dataController.deleteObject(object: item)
             }
         }
+        
+        
+        func openURL(_ url: URL) {
+            if url.absoluteString.contains("newIssue") {
+                dataController.addNewIssue()
+            } else if let issue = dataController.spotlightsearchissue(with: url.absoluteString) {
+                dataController.selectedIssue = issue
+                dataController.selectedFilter = .all
+            }
+        }
+        
     }
 }

@@ -6,7 +6,39 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		5D4ED2CF2DA1574100C98B17 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 5D4ED2CE2DA1574100C98B17 /* Credits.rtf */; };
+		5D4ED2F42DA159D800C98B17 /* UPAWatch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 5D4ED2D42DA159D700C98B17 /* UPAWatch Watch App.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5DB6035B2DA113C2007D2F0E /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DE917492D9FB30900029C6A /* WidgetKit.framework */; };
+		5DB6035C2DA113C2007D2F0E /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DE9174B2D9FB30900029C6A /* SwiftUI.framework */; };
+		5DB603682DA113C3007D2F0E /* FeedbackWidgetMacExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5DB6035A2DA113C2007D2F0E /* FeedbackWidgetMacExtension.appex */; platformFilters = (macos, ); settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5DE9174A2D9FB30900029C6A /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DE917492D9FB30900029C6A /* WidgetKit.framework */; };
+		5DE9174C2D9FB30900029C6A /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DE9174B2D9FB30900029C6A /* SwiftUI.framework */; };
+		5DE917572D9FB30B00029C6A /* FeedbackWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5DE917472D9FB30900029C6A /* FeedbackWidgetExtension.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
+		5D4ED2E12DA159D800C98B17 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5D537E962D958A73009B06DE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5D4ED2D32DA159D700C98B17;
+			remoteInfo = "UPAWatch Watch App";
+		};
+		5D4ED2EB2DA159D800C98B17 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5D537E962D958A73009B06DE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5D4ED2D32DA159D700C98B17;
+			remoteInfo = "UPAWatch Watch App";
+		};
+		5D4ED2F22DA159D800C98B17 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5D537E962D958A73009B06DE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5D4ED2D32DA159D700C98B17;
+			remoteInfo = "UPAWatch Watch App";
+		};
 		5D537EB62D958A75009B06DE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5D537E962D958A73009B06DE /* Project object */;
@@ -21,21 +53,148 @@
 			remoteGlobalIDString = 5D537E9D2D958A73009B06DE;
 			remoteInfo = "Feedback App";
 		};
+		5DB603662DA113C3007D2F0E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5D537E962D958A73009B06DE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5DB603592DA113C2007D2F0E;
+			remoteInfo = FeedbackWidgetMacExtension;
+		};
+		5DE917552D9FB30B00029C6A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5D537E962D958A73009B06DE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5DE917462D9FB30900029C6A;
+			remoteInfo = FeedbackWidgetExtension;
+		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		5D4ED2F82DA159D800C98B17 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				5D4ED2F42DA159D800C98B17 /* UPAWatch Watch App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5DE9175C2D9FB30B00029C6A /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				5DB603682DA113C3007D2F0E /* FeedbackWidgetMacExtension.appex in Embed Foundation Extensions */,
+				5DE917572D9FB30B00029C6A /* FeedbackWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		5D4ED2CE2DA1574100C98B17 /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
+		5D4ED2D42DA159D700C98B17 /* UPAWatch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UPAWatch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D4ED2E02DA159D800C98B17 /* UPAWatch Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UPAWatch Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D4ED2EA2DA159D800C98B17 /* UPAWatch Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "UPAWatch Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D537E9E2D958A73009B06DE /* Feedback App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Feedback App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D537EB52D958A75009B06DE /* Feedback AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Feedback AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D537EBF2D958A75009B06DE /* Feedback AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Feedback AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5DB6035A2DA113C2007D2F0E /* FeedbackWidgetMacExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FeedbackWidgetMacExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		5DE917472D9FB30900029C6A /* FeedbackWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FeedbackWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		5DE917492D9FB30900029C6A /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		5DE9174B2D9FB30900029C6A /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		5DE917662D9FB88700029C6A /* FeedbackWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FeedbackWidgetExtension.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		5D4ED3002DA15A9500C98B17 /* Exceptions for "Feedback App" folder in "UPAWatch Watch App" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"/Localized: Localization/Localizable.strings",
+				"/Localized: Localization/Localizable.stringsdict",
+				AppDelegate.swift,
+				Assets.xcassets,
+				Awards/Award.swift,
+				Awards/Awards.json,
+				Awards/AwardsView.swift,
+				Colors.xcassets,
+				Configurations/Configuration.storekit,
+				Configurations/Model.xcdatamodeld,
+				"DataController-Awards.swift",
+				"DataController-Notifications.swift",
+				"DataController-StoreKit.swift",
+				"DataController-Testing.swift",
+				DataController.swift,
+				Editing/DetailView.swift,
+				Editing/DetailViewNoIssue.swift,
+				Editing/DetailViewWithIssue.swift,
+				Editing/IssueViewToolbar.swift,
+				Editing/TagMenuView.swift,
+				"Extensions/Bundle-Decodable.swift",
+				"Extensions/Issue-CoreDataHelpers.swift",
+				"Extensions/Tag-CoreDataHelpers.swift",
+				FeedbackApp.swift,
+				Filters/Filter.swift,
+				Filters/SidebarView.swift,
+				Filters/SidebarViewToolbar.swift,
+				Filters/SidebarViewViewModel.swift,
+				Filters/SmartFilterRow.swift,
+				Filters/UserFilterRow.swift,
+				Issues/ContentView.swift,
+				Issues/ContentViewRows.swift,
+				Issues/ContentViewRowsViewModel.swift,
+				Issues/ContentViewRowWatch.swift,
+				Issues/ContentViewToolbar.swift,
+				Issues/ContentViewViewModel.swift,
+				PlatformAdjustments/InlineNavigationBar.swift,
+				PlatformAdjustments/MacFrame.swift,
+				PlatformAdjustments/NumberBadge.swift,
+				PlatformAdjustments/ToolbarItemPlacement.swift,
+				"Preview Content/Preview Assets.xcassets",
+				SceneDelegate.swift,
+				Store/StoreView.swift,
+			);
+			target = 5D4ED2D32DA159D700C98B17 /* UPAWatch Watch App */;
+		};
 		5D537EC72D958A75009B06DE /* Exceptions for "Feedback App" folder in "Feedback App" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Configurations/Info.plist,
 			);
 			target = 5D537E9D2D958A73009B06DE /* Feedback App */;
+		};
+		5DB6036C2DA113C3007D2F0E /* Exceptions for "FeedbackWidgetMac" folder in "FeedbackWidgetMacExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 5DB603592DA113C2007D2F0E /* FeedbackWidgetMacExtension */;
+		};
+		5DB603752DA11491007D2F0E /* Exceptions for "FeedbackWidget" folder in "FeedbackWidgetMacExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				ComplexFeedbackWidget.swift,
+				FeedbackWidgetBundle.swift,
+				SimpleFeedbackWidget.swift,
+			);
+			target = 5DB603592DA113C2007D2F0E /* FeedbackWidgetMacExtension */;
+		};
+		5DB603762DA11491007D2F0E /* Exceptions for "Feedback App" folder in "FeedbackWidgetMacExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Configurations/Model.xcdatamodeld,
+				"DataController-StoreKit.swift",
+				"DataController-Testing.swift",
+				DataController.swift,
+				"Extensions/Issue-CoreDataHelpers.swift",
+				"Extensions/Tag-CoreDataHelpers.swift",
+				Filters/Filter.swift,
+			);
+			target = 5DB603592DA113C2007D2F0E /* FeedbackWidgetMacExtension */;
 		};
 		5DD361A72D9A87F9008003CA /* Exceptions for "Feedback AppTests" folder in "Feedback AppTests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
@@ -44,13 +203,53 @@
 			);
 			target = 5D537EB42D958A75009B06DE /* Feedback AppTests */;
 		};
+		5DE9175B2D9FB30B00029C6A /* Exceptions for "FeedbackWidget" folder in "FeedbackWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 5DE917462D9FB30900029C6A /* FeedbackWidgetExtension */;
+		};
+		5DE9175E2D9FB44B00029C6A /* Exceptions for "Feedback App" folder in "FeedbackWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"/Localized: Localization/Localizable.strings",
+				"/Localized: Localization/Localizable.stringsdict",
+				Configurations/Model.xcdatamodeld,
+				"DataController-StoreKit.swift",
+				"DataController-Testing.swift",
+				DataController.swift,
+				"Extensions/Issue-CoreDataHelpers.swift",
+				"Extensions/Tag-CoreDataHelpers.swift",
+				Filters/Filter.swift,
+			);
+			target = 5DE917462D9FB30900029C6A /* FeedbackWidgetExtension */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		5D4ED2D52DA159D700C98B17 /* UPAWatch Watch App */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "UPAWatch Watch App";
+			sourceTree = "<group>";
+		};
+		5D4ED2E32DA159D800C98B17 /* UPAWatch Watch AppTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "UPAWatch Watch AppTests";
+			sourceTree = "<group>";
+		};
+		5D4ED2ED2DA159D800C98B17 /* UPAWatch Watch AppUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "UPAWatch Watch AppUITests";
+			sourceTree = "<group>";
+		};
 		5D537EA02D958A73009B06DE /* Feedback App */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				5D537EC72D958A75009B06DE /* Exceptions for "Feedback App" folder in "Feedback App" target */,
+				5DE9175E2D9FB44B00029C6A /* Exceptions for "Feedback App" folder in "FeedbackWidgetExtension" target */,
+				5DB603762DA11491007D2F0E /* Exceptions for "Feedback App" folder in "FeedbackWidgetMacExtension" target */,
+				5D4ED3002DA15A9500C98B17 /* Exceptions for "Feedback App" folder in "UPAWatch Watch App" target */,
 			);
 			path = "Feedback App";
 			sourceTree = "<group>";
@@ -68,9 +267,47 @@
 			path = "Feedback AppUITests";
 			sourceTree = "<group>";
 		};
+		5DB6035D2DA113C2007D2F0E /* FeedbackWidgetMac */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				5DB6036C2DA113C3007D2F0E /* Exceptions for "FeedbackWidgetMac" folder in "FeedbackWidgetMacExtension" target */,
+			);
+			path = FeedbackWidgetMac;
+			sourceTree = "<group>";
+		};
+		5DE9174D2D9FB30900029C6A /* FeedbackWidget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				5DE9175B2D9FB30B00029C6A /* Exceptions for "FeedbackWidget" folder in "FeedbackWidgetExtension" target */,
+				5DB603752DA11491007D2F0E /* Exceptions for "FeedbackWidget" folder in "FeedbackWidgetMacExtension" target */,
+			);
+			path = FeedbackWidget;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5D4ED2D12DA159D700C98B17 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5D4ED2DD2DA159D800C98B17 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5D4ED2E72DA159D800C98B17 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5D537E9B2D958A73009B06DE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -92,15 +329,41 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5DB603572DA113C2007D2F0E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5DB6035C2DA113C2007D2F0E /* SwiftUI.framework in Frameworks */,
+				5DB6035B2DA113C2007D2F0E /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5DE917442D9FB30900029C6A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5DE9174C2D9FB30900029C6A /* SwiftUI.framework in Frameworks */,
+				5DE9174A2D9FB30900029C6A /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		5D537E952D958A73009B06DE = {
 			isa = PBXGroup;
 			children = (
+				5D4ED2CE2DA1574100C98B17 /* Credits.rtf */,
+				5DE917662D9FB88700029C6A /* FeedbackWidgetExtension.entitlements */,
 				5D537EA02D958A73009B06DE /* Feedback App */,
 				5D537EB82D958A75009B06DE /* Feedback AppTests */,
 				5D537EC22D958A75009B06DE /* Feedback AppUITests */,
+				5DE9174D2D9FB30900029C6A /* FeedbackWidget */,
+				5DB6035D2DA113C2007D2F0E /* FeedbackWidgetMac */,
+				5D4ED2D52DA159D700C98B17 /* UPAWatch Watch App */,
+				5D4ED2E32DA159D800C98B17 /* UPAWatch Watch AppTests */,
+				5D4ED2ED2DA159D800C98B17 /* UPAWatch Watch AppUITests */,
+				5DE917482D9FB30900029C6A /* Frameworks */,
 				5D537E9F2D958A73009B06DE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -111,13 +374,95 @@
 				5D537E9E2D958A73009B06DE /* Feedback App.app */,
 				5D537EB52D958A75009B06DE /* Feedback AppTests.xctest */,
 				5D537EBF2D958A75009B06DE /* Feedback AppUITests.xctest */,
+				5DE917472D9FB30900029C6A /* FeedbackWidgetExtension.appex */,
+				5DB6035A2DA113C2007D2F0E /* FeedbackWidgetMacExtension.appex */,
+				5D4ED2D42DA159D700C98B17 /* UPAWatch Watch App.app */,
+				5D4ED2E02DA159D800C98B17 /* UPAWatch Watch AppTests.xctest */,
+				5D4ED2EA2DA159D800C98B17 /* UPAWatch Watch AppUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		5DE917482D9FB30900029C6A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5DE917492D9FB30900029C6A /* WidgetKit.framework */,
+				5DE9174B2D9FB30900029C6A /* SwiftUI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5D4ED2D32DA159D700C98B17 /* UPAWatch Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5D4ED2F52DA159D800C98B17 /* Build configuration list for PBXNativeTarget "UPAWatch Watch App" */;
+			buildPhases = (
+				5D4ED2D02DA159D700C98B17 /* Sources */,
+				5D4ED2D12DA159D700C98B17 /* Frameworks */,
+				5D4ED2D22DA159D700C98B17 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				5D4ED2D52DA159D700C98B17 /* UPAWatch Watch App */,
+			);
+			name = "UPAWatch Watch App";
+			packageProductDependencies = (
+			);
+			productName = "UPAWatch Watch App";
+			productReference = 5D4ED2D42DA159D700C98B17 /* UPAWatch Watch App.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5D4ED2DF2DA159D800C98B17 /* UPAWatch Watch AppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5D4ED2F92DA159D800C98B17 /* Build configuration list for PBXNativeTarget "UPAWatch Watch AppTests" */;
+			buildPhases = (
+				5D4ED2DC2DA159D800C98B17 /* Sources */,
+				5D4ED2DD2DA159D800C98B17 /* Frameworks */,
+				5D4ED2DE2DA159D800C98B17 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5D4ED2E22DA159D800C98B17 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				5D4ED2E32DA159D800C98B17 /* UPAWatch Watch AppTests */,
+			);
+			name = "UPAWatch Watch AppTests";
+			packageProductDependencies = (
+			);
+			productName = "UPAWatch Watch AppTests";
+			productReference = 5D4ED2E02DA159D800C98B17 /* UPAWatch Watch AppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		5D4ED2E92DA159D800C98B17 /* UPAWatch Watch AppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5D4ED2FC2DA159D800C98B17 /* Build configuration list for PBXNativeTarget "UPAWatch Watch AppUITests" */;
+			buildPhases = (
+				5D4ED2E62DA159D800C98B17 /* Sources */,
+				5D4ED2E72DA159D800C98B17 /* Frameworks */,
+				5D4ED2E82DA159D800C98B17 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5D4ED2EC2DA159D800C98B17 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				5D4ED2ED2DA159D800C98B17 /* UPAWatch Watch AppUITests */,
+			);
+			name = "UPAWatch Watch AppUITests";
+			packageProductDependencies = (
+			);
+			productName = "UPAWatch Watch AppUITests";
+			productReference = 5D4ED2EA2DA159D800C98B17 /* UPAWatch Watch AppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		5D537E9D2D958A73009B06DE /* Feedback App */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5D537EC82D958A75009B06DE /* Build configuration list for PBXNativeTarget "Feedback App" */;
@@ -125,10 +470,15 @@
 				5D537E9A2D958A73009B06DE /* Sources */,
 				5D537E9B2D958A73009B06DE /* Frameworks */,
 				5D537E9C2D958A73009B06DE /* Resources */,
+				5DE9175C2D9FB30B00029C6A /* Embed Foundation Extensions */,
+				5D4ED2F82DA159D800C98B17 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				5DE917562D9FB30B00029C6A /* PBXTargetDependency */,
+				5DB603672DA113C3007D2F0E /* PBXTargetDependency */,
+				5D4ED2F32DA159D800C98B17 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				5D537EA02D958A73009B06DE /* Feedback App */,
@@ -186,6 +536,50 @@
 			productReference = 5D537EBF2D958A75009B06DE /* Feedback AppUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		5DB603592DA113C2007D2F0E /* FeedbackWidgetMacExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5DB603692DA113C3007D2F0E /* Build configuration list for PBXNativeTarget "FeedbackWidgetMacExtension" */;
+			buildPhases = (
+				5DB603562DA113C2007D2F0E /* Sources */,
+				5DB603572DA113C2007D2F0E /* Frameworks */,
+				5DB603582DA113C2007D2F0E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				5DB6035D2DA113C2007D2F0E /* FeedbackWidgetMac */,
+			);
+			name = FeedbackWidgetMacExtension;
+			packageProductDependencies = (
+			);
+			productName = FeedbackWidgetMacExtension;
+			productReference = 5DB6035A2DA113C2007D2F0E /* FeedbackWidgetMacExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		5DE917462D9FB30900029C6A /* FeedbackWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5DE917582D9FB30B00029C6A /* Build configuration list for PBXNativeTarget "FeedbackWidgetExtension" */;
+			buildPhases = (
+				5DE917432D9FB30900029C6A /* Sources */,
+				5DE917442D9FB30900029C6A /* Frameworks */,
+				5DE917452D9FB30900029C6A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				5DE9174D2D9FB30900029C6A /* FeedbackWidget */,
+			);
+			name = FeedbackWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = FeedbackWidgetExtension;
+			productReference = 5DE917472D9FB30900029C6A /* FeedbackWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -193,9 +587,20 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1620;
+				LastSwiftUpdateCheck = 1630;
 				LastUpgradeCheck = 1630;
 				TargetAttributes = {
+					5D4ED2D32DA159D700C98B17 = {
+						CreatedOnToolsVersion = 16.3;
+					};
+					5D4ED2DF2DA159D800C98B17 = {
+						CreatedOnToolsVersion = 16.3;
+						TestTargetID = 5D4ED2D32DA159D700C98B17;
+					};
+					5D4ED2E92DA159D800C98B17 = {
+						CreatedOnToolsVersion = 16.3;
+						TestTargetID = 5D4ED2D32DA159D700C98B17;
+					};
 					5D537E9D2D958A73009B06DE = {
 						CreatedOnToolsVersion = 16.2;
 					};
@@ -206,6 +611,12 @@
 					5D537EBE2D958A75009B06DE = {
 						CreatedOnToolsVersion = 16.2;
 						TestTargetID = 5D537E9D2D958A73009B06DE;
+					};
+					5DB603592DA113C2007D2F0E = {
+						CreatedOnToolsVersion = 16.3;
+					};
+					5DE917462D9FB30900029C6A = {
+						CreatedOnToolsVersion = 16.3;
 					};
 				};
 			};
@@ -228,15 +639,42 @@
 				5D537E9D2D958A73009B06DE /* Feedback App */,
 				5D537EB42D958A75009B06DE /* Feedback AppTests */,
 				5D537EBE2D958A75009B06DE /* Feedback AppUITests */,
+				5DE917462D9FB30900029C6A /* FeedbackWidgetExtension */,
+				5DB603592DA113C2007D2F0E /* FeedbackWidgetMacExtension */,
+				5D4ED2D32DA159D700C98B17 /* UPAWatch Watch App */,
+				5D4ED2DF2DA159D800C98B17 /* UPAWatch Watch AppTests */,
+				5D4ED2E92DA159D800C98B17 /* UPAWatch Watch AppUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5D4ED2D22DA159D700C98B17 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5D4ED2DE2DA159D800C98B17 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5D4ED2E82DA159D800C98B17 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5D537E9C2D958A73009B06DE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D4ED2CF2DA1574100C98B17 /* Credits.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,9 +692,44 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5DB603582DA113C2007D2F0E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5DE917452D9FB30900029C6A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5D4ED2D02DA159D700C98B17 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5D4ED2DC2DA159D800C98B17 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5D4ED2E62DA159D800C98B17 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5D537E9A2D958A73009B06DE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -278,9 +751,39 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5DB603562DA113C2007D2F0E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5DE917432D9FB30900029C6A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		5D4ED2E22DA159D800C98B17 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5D4ED2D32DA159D700C98B17 /* UPAWatch Watch App */;
+			targetProxy = 5D4ED2E12DA159D800C98B17 /* PBXContainerItemProxy */;
+		};
+		5D4ED2EC2DA159D800C98B17 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5D4ED2D32DA159D700C98B17 /* UPAWatch Watch App */;
+			targetProxy = 5D4ED2EB2DA159D800C98B17 /* PBXContainerItemProxy */;
+		};
+		5D4ED2F32DA159D800C98B17 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilter = ios;
+			target = 5D4ED2D32DA159D700C98B17 /* UPAWatch Watch App */;
+			targetProxy = 5D4ED2F22DA159D800C98B17 /* PBXContainerItemProxy */;
+		};
 		5D537EB72D958A75009B06DE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 5D537E9D2D958A73009B06DE /* Feedback App */;
@@ -291,14 +794,177 @@
 			target = 5D537E9D2D958A73009B06DE /* Feedback App */;
 			targetProxy = 5D537EC02D958A75009B06DE /* PBXContainerItemProxy */;
 		};
+		5DB603672DA113C3007D2F0E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilters = (
+				macos,
+			);
+			target = 5DB603592DA113C2007D2F0E /* FeedbackWidgetMacExtension */;
+			targetProxy = 5DB603662DA113C3007D2F0E /* PBXContainerItemProxy */;
+		};
+		5DE917562D9FB30B00029C6A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilter = ios;
+			target = 5DE917462D9FB30900029C6A /* FeedbackWidgetExtension */;
+			targetProxy = 5DE917552D9FB30B00029C6A /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		5D4ED2F62DA159D800C98B17 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = NO;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CG26R55WU3;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = UPAWatch;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "Portfolio.Feedback-App";
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = NO;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Portfolio.Feedback-App.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 11.4;
+			};
+			name = Debug;
+		};
+		5D4ED2F72DA159D800C98B17 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = NO;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CG26R55WU3;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = UPAWatch;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "Portfolio.Feedback-App";
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = NO;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Portfolio.Feedback-App.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 11.4;
+			};
+			name = Release;
+		};
+		5D4ED2FA2DA159D800C98B17 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CG26R55WU3;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Portfolio.UPAWatch-Watch-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UPAWatch Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/UPAWatch Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 11.4;
+			};
+			name = Debug;
+		};
+		5D4ED2FB2DA159D800C98B17 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CG26R55WU3;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Portfolio.UPAWatch-Watch-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UPAWatch Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/UPAWatch Watch App";
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 11.4;
+			};
+			name = Release;
+		};
+		5D4ED2FD2DA159D800C98B17 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CG26R55WU3;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Portfolio.UPAWatch-Watch-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = "UPAWatch Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 11.4;
+			};
+			name = Debug;
+		};
+		5D4ED2FE2DA159D800C98B17 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CG26R55WU3;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Portfolio.UPAWatch-Watch-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = "UPAWatch Watch App";
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 11.4;
+			};
+			name = Release;
+		};
 		5D537EC92D958A75009B06DE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = NO;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = "Feedback App/Configurations/Feedback_App.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
@@ -306,6 +972,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Feedback App/Preview Content\"";
+				DEVELOPMENT_TEAM = CG26R55WU3;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -328,6 +995,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Portfolio.Feedback-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -341,7 +1009,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = NO;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = "Feedback App/Configurations/Feedback_App.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
@@ -349,6 +1019,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Feedback App/Preview Content\"";
+				DEVELOPMENT_TEAM = CG26R55WU3;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -371,6 +1042,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Portfolio.Feedback-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -590,9 +1262,165 @@
 			};
 			name = Release;
 		};
+		5DB6036A2DA113C3007D2F0E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = FeedbackWidgetMac/FeedbackWidgetMac.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CG26R55WU3;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FeedbackWidgetMac/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FeedbackWidgetMac;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Portfolio.Feedback-App.FeedbackWidgetMac";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		5DB6036B2DA113C3007D2F0E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = FeedbackWidgetMac/FeedbackWidgetMac.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CG26R55WU3;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FeedbackWidgetMac/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FeedbackWidgetMac;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Portfolio.Feedback-App.FeedbackWidgetMac";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		5DE917592D9FB30B00029C6A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = FeedbackWidgetExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FeedbackWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FeedbackWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Portfolio.Feedback-App.FeedbackWidget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5DE9175A2D9FB30B00029C6A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = FeedbackWidgetExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FeedbackWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FeedbackWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Portfolio.Feedback-App.FeedbackWidget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5D4ED2F52DA159D800C98B17 /* Build configuration list for PBXNativeTarget "UPAWatch Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5D4ED2F62DA159D800C98B17 /* Debug */,
+				5D4ED2F72DA159D800C98B17 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5D4ED2F92DA159D800C98B17 /* Build configuration list for PBXNativeTarget "UPAWatch Watch AppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5D4ED2FA2DA159D800C98B17 /* Debug */,
+				5D4ED2FB2DA159D800C98B17 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5D4ED2FC2DA159D800C98B17 /* Build configuration list for PBXNativeTarget "UPAWatch Watch AppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5D4ED2FD2DA159D800C98B17 /* Debug */,
+				5D4ED2FE2DA159D800C98B17 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		5D537E992D958A73009B06DE /* Build configuration list for PBXProject "Feedback App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -625,6 +1453,24 @@
 			buildConfigurations = (
 				5D537ED12D958A75009B06DE /* Debug */,
 				5D537ED22D958A75009B06DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5DB603692DA113C3007D2F0E /* Build configuration list for PBXNativeTarget "FeedbackWidgetMacExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5DB6036A2DA113C3007D2F0E /* Debug */,
+				5DB6036B2DA113C3007D2F0E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5DE917582D9FB30B00029C6A /* Build configuration list for PBXNativeTarget "FeedbackWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5DE917592D9FB30B00029C6A /* Debug */,
+				5DE9175A2D9FB30B00029C6A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

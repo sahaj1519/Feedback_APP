@@ -29,6 +29,8 @@
 "Turn Filter On" = "Turn Filter On"; /* Enables filtering */
 "Turn Filter Off" = "Turn Filter Off"; /* Disables filtering */
 "Sort By" = "Sort By"; /* Adjust the order issues are shown */
+"Sort Order" = "Sort Order";
+"Status" = "Status";
 "Date Created" = "Date Created"; /* Sort issues by the date they were created */
 "Date Modified" = "Date Modified"; /* Sort issues by the date they were last changed */
 "Newest To Oldest" = "Newest To Oldest"; /* Place newer issues before older issues */
@@ -67,12 +69,14 @@
 "Re-open Issue" = "Re-open Issue";
 
 /* Fields that let the users enter details about a specific issue */
+"Title" = "Title";
 "Enter the issue title here" = "Enter the issue title here";
 "**Modified:** %@" = "**Modified:** %@";
 "**Status:** %@" = "**Status:** %@";
 "Priority" = "Priority";
 "Add Tags" = "Add Tags";
 "Basic Information" = "Basic Information";
+"Description" = "Description";
 "Enter the issue description here" = "Enter the issue description here";
 
 /* REMINDERS */
@@ -86,6 +90,7 @@
 
 
 /* AWARDS VIEW */
+"Close" = "Close";
 "Awards" = "Awards";
 "Locked" = "Locked";
 "Unlocked: %@" = "Unlocked: %@";
@@ -101,6 +106,14 @@
 "Restore Purchases" = "Restore Purchases";
 "In-app purchases are disabled" = "In-app purchases are disabled";
 "You can't purchase the premium unlock because in-app purchases are disabled on this device.\n\nPlease ask whomever manages your device for assistance." = "You can't purchase the premium unlock because in-app purchases are disabled on this device.\n\nPlease ask whomever manages your device for assistance.";
+
+
+
+/* WIDGETS */
+"Up next…" = "Up next…";
+"Nothing!" = "Nothing!";
+"Your #1 top-priority issue." = "Your #1 top-priority issue.";
+"Your most important issues." = "Your most important issues.";
 
 
 

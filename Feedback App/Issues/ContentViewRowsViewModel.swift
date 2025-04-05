@@ -17,7 +17,9 @@ extension ContentViewRows {
     /// A `ViewModel` for `ContentViewRows`, responsible for handling issue-related data and UI interactions.
     ///
     /// - Features:
-    ///   - **Read-only computed properties** for issue details such as **priority, creation date, and accessibility labels**.
+    ///   - **Read-only computed properties**
+    ///   for issue details such as
+    ///   **priority, creation date, and accessibility labels**.
     ///   - **Accessibility support** for screen readers to enhance usability.
     ///   - **Priority-based UI adjustments** to visually distinguish high-priority issues.
     @dynamicMemberLookup

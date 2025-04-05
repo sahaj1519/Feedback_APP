@@ -13,6 +13,7 @@ import SwiftUI
 struct AwardsView: View {
     /// Accesses the shared `DataController` instance to check award status.
     @EnvironmentObject var dataController: DataController
+    @Environment(\.dismiss) var dismiss
     
     /// Stores the currently selected award when tapped.
     @State private var selectedAward = Award.example
@@ -70,13 +71,22 @@ struct AwardsView: View {
                                 .frame(width: 100, height: 100)
                                 .foregroundStyle(awardColor(for: item))
                         }
+                        .buttonStyle(.borderless)
                         .accessibilityLabel(awardLabel(for: item))
                         .accessibilityHint(item.description)
                     }
                 }
             }
             .navigationTitle("Awards")
+            #if !os(watchOS)
+            .toolbar {
+                Button("Close") {
+                    dismiss()
+                }
+            }
+            #endif
         }
+        .macFrame(minWidth: 600, maxHeight: 500)
         .alert(alertTitle, isPresented: $isAlertShowingAwardDetails) {
         } message: {
             /// Displays the description of the selected award in the alert.
@@ -87,4 +97,5 @@ struct AwardsView: View {
 
 #Preview {
     AwardsView()
+        .environmentObject(DataController.preview)
 }

@@ -10,6 +10,7 @@ import SwiftUI
 /// A row view that represents a user-defined filter in the navigation list.
 /// It provides options to rename or delete the filter via a context menu.
 struct UserFilterRow: View {
+    @EnvironmentObject var dataController: DataController
     
     /// The filter represented by this row.
     var filter: Filter
@@ -22,8 +23,9 @@ struct UserFilterRow: View {
     
     var body: some View {
         NavigationLink(value: filter) {
-            Label(filter.name, systemImage: filter.icon)
-                .badge(filter.activeIssueCount)
+            Label(filter.tag?.name ?? "No name", systemImage: filter.icon)
+                .NumberBadge(filter.activeIssueCount)
+                #if !os(watchOS)
                 .contextMenu {
                     Button {
                         rename(filter)
@@ -37,6 +39,7 @@ struct UserFilterRow: View {
                         Label("Delete", systemImage: "trash")
                     }
                 }
+                 #endif
                 .accessibilityElement()
                 .accessibilityLabel(filter.name)
                 .accessibilityHint("\(filter.activeIssueCount) issues")

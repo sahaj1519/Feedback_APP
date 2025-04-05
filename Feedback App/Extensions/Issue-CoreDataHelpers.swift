@@ -174,7 +174,8 @@ extension Issue: Comparable {
     ///   - lhs: The left-hand side `Issue` object to compare.
     ///   - rhs: The right-hand side `Issue` object to compare.
     ///
-    /// - Returns: A Boolean value indicating whether the left-hand side `Issue` should be ordered before the right-hand side.
+    /// - Returns: A Boolean value indicating whether the left-hand side `Issue`
+    ///           should be ordered before the right-hand side.
     public static func < (lhs: Issue, rhs: Issue) -> Bool {
         // Convert both titles to lowercase for case-insensitive comparison
         let left = lhs.issueTitle.localizedLowercase

@@ -9,6 +9,9 @@
 import CoreData
 import StoreKit
 import SwiftUI
+#if canImport(WidgetKit)
+import WidgetKit
+#endif
 
 /// Enumeration representing sorting options for issues.
 enum SortType: String {
@@ -28,7 +31,9 @@ class DataController: ObservableObject {
     /// Persistent container for Core Data with CloudKit support.
     let container: NSPersistentCloudKitContainer
     
+    #if !os(watchOS)
     var spotlightDelegate: NSCoreDataCoreSpotlightDelegate?
+    #endif
     
     
     /// Currently selected filter for issues.
@@ -99,8 +104,61 @@ class DataController: ObservableObject {
         return managedObjectModel
     }()
     
-    /// Initializes the Core Data stack.
-    /// - Parameter inMemory: A flag to indicate if an in-memory store should be used (for previews/testing).
+    /**
+     Initializes the Core Data stack, setting up the persistent container
+     along with CloudKit integration and Spotlight indexing.
+
+     This initializer performs several key tasks:
+     
+     1. **Persistent Container Initialization:**
+        It creates an instance of `NSPersistentCloudKitContainer` using the specified data model.
+        This container is responsible for managing the Core Data stack and
+        integrating with CloudKit for syncing changes.
+     
+     2. **Store Task Setup:**
+        A background task is started to monitor transactions, ensuring that any changes are tracked appropriately.
+     
+     3. **In-Memory Store Configuration (Optional):**
+        If the `inMemory` parameter is set to `true`,
+        the persistent store is configured to use an in-memory store (by setting its URL to `/dev/null`),
+        which is particularly useful for previews and unit testing without affecting the on-disk database.
+     
+     4. **Context Merging and Conflict Resolution:**
+        The main view context is configured to automatically merge changes from its parent and
+        uses the `mergeByPropertyObjectTrump` merge policy to resolve conflicts,
+        ensuring that in-memory changes take precedence.
+     
+     5. **CloudKit Remote Change Notifications:**
+        Remote change notifications are enabled by setting the
+       `NSPersistentStoreRemoteChangeNotificationPostOptionKey` on the persistent store.
+        This allows the app to listen for updates from CloudKit and update the UI accordingly.
+     
+     6. **Observing Remote Store Changes:**
+        An observer is added to the notification center to handle `NSPersistentStoreRemoteChange` notifications,
+        enabling the app to react to changes that occur in the remote store.
+     
+     7. **Persistent Store Loading and Error Handling:**
+        The persistent store is loaded asynchronously. In the event of an error,
+        the app terminates with a fatal error message containing a description of the failure.
+     
+     8. **Persistent History Tracking and Spotlight Indexing:**
+        After successfully loading the store, persistent history tracking is enabled for data consistency.
+        If available, the `NSCoreDataCoreSpotlightDelegate`
+        is configured to start indexing Core Data entities with Spotlight,
+        making the data searchable from the system level.
+     
+     9. **Testing Environment Setup:**
+        For debugging and testing purposes (when the "enable-testing" argument is present),
+        all existing data is deleted and UI animations are disabled to ensure a consistent test environment.
+
+     - Parameters:
+        - inMemory: A Boolean flag indicating whether an in-memory store should be used.
+                   Defaults to `false`. Set this to `true` for testing or previews.
+        - defaults: The `UserDefaults` instance used for storing application preferences. Defaults to `.standard`.
+
+     After execution, the Core Data stack is fully initialized with support for local persistence,
+     remote syncing via CloudKit, and integration with system-wide search through Spotlight.
+     */
     init(inMemory: Bool = false, defaults: UserDefaults = .standard) {
         self.defaults = defaults
         
@@ -114,6 +172,12 @@ class DataController: ObservableObject {
         // Configure an in-memory store if requested (used for previews and unit tests)
         if inMemory {
             container.persistentStoreDescriptions.first?.url = URL(filePath: "/dev/null")
+        } else {
+             let groupID = "group.Portfolio.Feedback-App"
+            
+            if let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: groupID) {
+                container.persistentStoreDescriptions.first?.url = url.appending(path: "Model.sqlite")
+            }
         }
         
         // Enable automatic merging of changes between contexts
@@ -126,6 +190,10 @@ class DataController: ObservableObject {
             forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey
         )
         
+        container.persistentStoreDescriptions.first?.setOption(
+            true as NSNumber,
+            forKey: NSPersistentHistoryTrackingKey)
+        
         // Observe CloudKit changes and update UI accordingly
         NotificationCenter.default.addObserver(
             forName: .NSPersistentStoreRemoteChange,
@@ -133,7 +201,7 @@ class DataController: ObservableObject {
             queue: .main,
             using: remoteStoreChanged
         )
-        
+       
         // Load the persistent store and handle errors if any occur
         container.loadPersistentStores { [weak self] _, error in
             if let error {
@@ -141,6 +209,7 @@ class DataController: ObservableObject {
             }
             
             // Enable persistent history tracking for data consistency
+           #if !os(watchOS)
             if let description = self?.container.persistentStoreDescriptions.first {
                 description.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
                 
@@ -155,16 +224,11 @@ class DataController: ObservableObject {
                     self?.spotlightDelegate?.startSpotlightIndexing()
                 }
             }
-            
-            // If running in test mode, delete all existing data and disable animations
-#if DEBUG
-            if CommandLine.arguments.contains("enable-testing") {
-                self?.deleteAllData()
-                UIView.setAnimationsEnabled(false)
-            }
-#endif
+            #endif
+            self?.checkForTestEnvironment()
         }
     }
+
     
     /// Handles remote store changes from CloudKit.
     private func remoteStoreChanged(_ notification: Notification) {
@@ -226,19 +290,9 @@ class DataController: ObservableObject {
         if container.viewContext.hasChanges {
             // Step 3: Attempt to save changes, using `try?` to safely ignore errors
             try? container.viewContext.save()
-        }
-    }
-    
-    
-    /// Queues a save operation with a 3-second delay.
-    func queueSave() {
-        // Cancel any existing save task to prevent unnecessary saves
-        saveTask?.cancel()
-        
-        saveTask = Task { @MainActor in
-            // Wait for 3 seconds before saving changes
-            try await Task.sleep(for: .seconds(3))
-            saveChanges()
+            #if canImport(WidgetKit)
+            WidgetCenter.shared.reloadAllTimelines()
+            #endif
         }
     }
     
@@ -326,7 +380,9 @@ class DataController: ObservableObject {
             let contentPredicate = NSPredicate(format: "content CONTAINS[c] %@", trimmedSearchText)
             
             // Combine title and content predicates using OR logic
-            let combinedPredicate = NSCompoundPredicate(orPredicateWithSubpredicates: [titlePredicate, contentPredicate])
+            let combinedPredicate = NSCompoundPredicate(
+                orPredicateWithSubpredicates: [titlePredicate, contentPredicate]
+            )
             predicates.append(combinedPredicate)
         }
         
@@ -413,27 +469,19 @@ class DataController: ObservableObject {
         (try? container.viewContext.count(for: fetchRequest)) ?? 0
     }
     
-    /// Determines if a user has earned a specific award.
-    /// - Parameter award: The award to check.
-    /// - Returns: `true` if the user has met the award's criterion, otherwise `false`.
-    func hasEarned(award: Award) -> Bool {
-        switch award.criterion {
-        case "issues":
-            return count(for: Issue.fetchRequest()) >= award.value
-            
-        case "closed":
-            let fetchRequest = Issue.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "isCompleted = true")
-            return count(for: fetchRequest) >= award.value
-            
-        case "tags":
-            return count(for: Tag.fetchRequest()) >= award.value
-            
-        case "unlock":
-            return fullVersionUnlocked
-            
-        default:
-            return false
-        }
+    func fetchRequestForTopIssues(count: Int) -> NSFetchRequest<Issue> {
+        let request = Issue.fetchRequest()
+        
+        request.predicate = NSPredicate(format: "isCompleted = false")
+        request.sortDescriptors = [
+            NSSortDescriptor(keyPath: \Issue.priority, ascending: false)
+        ]
+        
+        request.fetchLimit = count
+        return request
+    }
+    
+    func results<T: NSManagedObject>(for fetchRequest: NSFetchRequest<T>) -> [T] {
+        return (try? container.viewContext.fetch(fetchRequest)) ?? []
     }
 }

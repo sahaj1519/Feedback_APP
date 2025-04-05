@@ -18,10 +18,15 @@ import CoreData
 /// - Note: This view requires a `DataController` to manage issue data.
 struct ContentView: View {
     
+    private let newIssueActivity = "Portfolio.Feedback-App.newIssue"
+    
     /// The view model responsible for managing issue-related operations.
     @StateObject private var viewModel: ViewModel
     
+    /// Handles in-app review requests.
+    #if !os(watchOS)
     @Environment(\.requestReview) var requestReview
+    #endif
     
     /// Initializes the `ContentView` with a `DataController`.
     ///
@@ -35,10 +40,20 @@ struct ContentView: View {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
     
+    /// Requests an in-app review if conditions are met.
+    ///
+    /// - This function is triggered when `ContentView` appears.
+    /// - It checks whether the app should request a review, then prompts the system review dialog.
+    #if !os(watchOS)
     func askForReview() {
         if viewModel.shouldRequestReview {
             requestReview()
         }
+    }
+    #endif
+    
+    func resumeActivity(_ userActivity: NSUserActivity) {
+        viewModel.dataController.addNewIssue()
     }
     
     var body: some View {
@@ -46,12 +61,17 @@ struct ContentView: View {
         /// - Displays all issues that match the selected filter.
         /// - Supports selection and deletion.
         List(selection: $viewModel.selectedIssue) {
-            // Loops through filtered issues and displays each as a row.
+            /// Loops through filtered issues and displays each as a row.
             ForEach(viewModel.dataController.issueForSelectedFilter()) { item in
+              #if os(watchOS)
+                 ContentViewRowWatch(issue: item)
+              #else
                 ContentViewRows(issue: item)
+              #endif
             }
             .onDelete(perform: viewModel.deleteIssue) // Enables swipe-to-delete functionality.
         }
+        .macFrame(minWidth: 220)
         
         /// **Navigation Title**
         /// - Sets the navigation bar title to "Issues".
@@ -60,6 +80,7 @@ struct ContentView: View {
         /// **Search Bar**
         /// - Allows users to search issues by text or tags.
         /// - Supports token-based filtering by typing `#` to add tags.
+        #if !os(watchOS)
         .searchable(
             text: $viewModel.searchText,
             tokens: $viewModel.searchTokens,
@@ -68,11 +89,24 @@ struct ContentView: View {
         ) { tag in
             Text(tag.tagName) // Displays suggested tag names.
         }
+        #endif
         
         /// **Toolbar**
         /// - Contains options for sorting, filtering, and creating new issues.
         .toolbar(content: ContentViewToolbar.init)
+        
+        /// **Triggers in-app review request when the view appears.**
+        #if !os(watchOS)
         .onAppear(perform: askForReview)
+        #endif
+        .onOpenURL(perform: viewModel.openURL)
+        .userActivity(newIssueActivity) { activity in
+            #if !os(macOS)
+            activity.isEligibleForPrediction = true
+            #endif
+            activity.title = "New Issue"
+        }
+        .onContinueUserActivity(newIssueActivity, perform: resumeActivity)
     }
 }
 

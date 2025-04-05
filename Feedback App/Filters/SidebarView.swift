@@ -61,7 +61,9 @@ struct SidebarView: View {
                 .onDelete(perform: viewModel.deleteTag) // Enables swipe-to-delete for tags.
             }
         }
+        .macFrame(minWidth: 220)
         .toolbar(content: SidebarViewToolbar.init) // Adds toolbar actions.
+        
         
         /// **Rename Tag Alert**
         /// - Displays an alert when a tag is selected for renaming.

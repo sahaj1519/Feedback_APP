@@ -41,7 +41,7 @@ extension Tag {
     ///
     /// - Returns: An array of `Issue` objects that are incomplete and associated with this tag.
     var tagIssue: [Issue] {
-        let result = issues?.allObjects as? [Issue] ?? []
+        let result = (issues as? Set<Issue>) ?? []
         return result.filter { !$0.isCompleted }
     }
     
@@ -63,7 +63,8 @@ extension Tag {
 
 /// **Sorting Support for `Tag`**
 ///
-/// This extension makes `Tag` conform to `Comparable`, allowing tags to be compared and sorted using Swift's `<` operator.
+/// This extension makes `Tag` conform to `Comparable`,
+/// allowing tags to be compared and sorted using Swift's `<` operator.
 extension Tag: Comparable {
     
     /// **Sorting Logic for `Tag` Objects**

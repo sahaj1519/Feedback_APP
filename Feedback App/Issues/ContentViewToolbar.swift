@@ -15,6 +15,7 @@ struct ContentViewToolbar: View {
     
     var body: some View {
         /// A menu containing filter and sorting options for issues.
+     #if !os(watchOS)
         Menu {
             // A toggle button to enable or disable filtering.
             Button(dataController.filterEnabled ? "Turn Filter Off" : "Turn Filter On") {
@@ -28,6 +29,8 @@ struct ContentViewToolbar: View {
                     Text("Date Created").tag(SortType.dateCreated)
                     Text("Date Modified").tag(SortType.dateModified)
                 }
+                .pickerStyle(.inline)
+                .labelsHidden()
                 
                 Divider() // Adds a visual separator between sections.
                 
@@ -36,6 +39,8 @@ struct ContentViewToolbar: View {
                     Text("Newest To Oldest").tag(false)
                     Text("Oldest To Newest").tag(true)
                 }
+                .pickerStyle(.inline)
+                .labelsHidden()
             }
             
             /// A picker to filter issues by status (All, Open, Closed).
@@ -60,12 +65,16 @@ struct ContentViewToolbar: View {
             Label("Filter", systemImage: "line.3.horizontal.decrease.circle")
                 .symbolVariant(dataController.filterEnabled ? .fill : .none)
         }
+        .help("Filter")
+       #endif
         
         /// A button to add a new issue.
         Button(action: dataController.addNewIssue) {
             Label("New Issue", systemImage: "square.and.pencil")
         }
+        .help("New Issue")
     }
+    
 }
 
 #Preview {
