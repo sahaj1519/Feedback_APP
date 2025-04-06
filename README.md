@@ -121,7 +121,8 @@ If users launched the app on multiple devices before CloudKit synced, it created
 
 Ajay 
 
-iOS & macOS Developer
+iOS & macOS Developer 
+
 [LinkedIn](https://www.linkedin.com/in/ajay-sangwan-601171348) · [GitHub](https://github.com/sahaj1519)
 
 
