@@ -119,7 +119,8 @@ If users launched the app on multiple devices before CloudKit synced, it created
 
 👤 Author
 
-Ajay
+Ajay 
+
 iOS & macOS Developer
 [LinkedIn](https://www.linkedin.com/in/ajay-sangwan-601171348) · [GitHub](https://github.com/sahaj1519)
 
