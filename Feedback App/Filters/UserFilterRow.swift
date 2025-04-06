@@ -24,7 +24,7 @@ struct UserFilterRow: View {
     var body: some View {
         NavigationLink(value: filter) {
             Label(filter.tag?.name ?? "No name", systemImage: filter.icon)
-                .NumberBadge(filter.activeIssueCount)
+                .numberBadge(filter.activeIssueCount)
                 #if !os(watchOS)
                 .contextMenu {
                     Button {

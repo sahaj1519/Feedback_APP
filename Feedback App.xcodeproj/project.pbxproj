@@ -233,16 +233,6 @@
 			path = "UPAWatch Watch App";
 			sourceTree = "<group>";
 		};
-		5D4ED2E32DA159D800C98B17 /* UPAWatch Watch AppTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "UPAWatch Watch AppTests";
-			sourceTree = "<group>";
-		};
-		5D4ED2ED2DA159D800C98B17 /* UPAWatch Watch AppUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "UPAWatch Watch AppUITests";
-			sourceTree = "<group>";
-		};
 		5D537EA02D958A73009B06DE /* Feedback App */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
@@ -361,8 +351,6 @@
 				5DE9174D2D9FB30900029C6A /* FeedbackWidget */,
 				5DB6035D2DA113C2007D2F0E /* FeedbackWidgetMac */,
 				5D4ED2D52DA159D700C98B17 /* UPAWatch Watch App */,
-				5D4ED2E32DA159D800C98B17 /* UPAWatch Watch AppTests */,
-				5D4ED2ED2DA159D800C98B17 /* UPAWatch Watch AppUITests */,
 				5DE917482D9FB30900029C6A /* Frameworks */,
 				5D537E9F2D958A73009B06DE /* Products */,
 			);
@@ -430,9 +418,6 @@
 			dependencies = (
 				5D4ED2E22DA159D800C98B17 /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				5D4ED2E32DA159D800C98B17 /* UPAWatch Watch AppTests */,
-			);
 			name = "UPAWatch Watch AppTests";
 			packageProductDependencies = (
 			);
@@ -452,9 +437,6 @@
 			);
 			dependencies = (
 				5D4ED2EC2DA159D800C98B17 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				5D4ED2ED2DA159D800C98B17 /* UPAWatch Watch AppUITests */,
 			);
 			name = "UPAWatch Watch AppUITests";
 			packageProductDependencies = (

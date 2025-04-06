@@ -43,7 +43,7 @@ struct ComplexEntry: TimelineEntry {
 struct ComplexFeedbackWidgetEntryView: View {
     @Environment(\.widgetFamily) var widgetFamily
     @Environment(\.dynamicTypeSize) var dynamicTypeSize
-    var entry:  ComplexProvider.Entry
+    var entry: ComplexProvider.Entry
     
     var issues: ArraySlice<Issue> {
         let issueCount: Int

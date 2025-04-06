@@ -16,4 +16,3 @@ extension ToolbarItemPlacement {
     static let automaticOrTrailing = ToolbarItemPlacement.automatic
     #endif
 }
-

@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension View {
-    func InlineNavigationBar() -> some View {
+    func inlineNavigationBar() -> some View {
         #if os(macOS)
         self
         #else

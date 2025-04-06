@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension View {
-    func NumberBadge(_ number: Int) -> some View {
+    func numberBadge(_ number: Int) -> some View {
         #if os(watchOS)
            self
         #else
